@@ -1,6 +1,23 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.contents{
-  background-color: antiquewhite;
+body{
+  background-color: whitesmoke;
+}
+
+.title {
+  font-size: 50px;
+}
+
+.description{
+  display: flex;
+  &__text {
+    margin: 0 50px;
+    &__checkbox {
+      width: 800px;
+    }
+    &__main {
+      color: red;
+    }
+  }
 }
