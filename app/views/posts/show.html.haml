@@ -1,9 +1,8 @@
 .details
   %p
     .details__username
-      投稿者
       = @user.nickname
-      さん
+      さんの投稿
     .details__title
       = @post.title
   %p
@@ -17,3 +16,11 @@
       = link_to '編集', edit_post_path(@post), class: 'post'
       = link_to '削除', post_path(@post), method: :delete, class: 'post', data: { confirm: '削除しますか？' }
   = image_tag "nayamuhito.png"
+
+  = form_for( [@post, @post.comments.build] ) do |f|
+    %p
+      = f.label :text, "コメント"
+      %br/
+      = f.text_area :text, cols: 60, rows: 8
+    %p
+      = f.submit "コメント投稿", class: 'post'

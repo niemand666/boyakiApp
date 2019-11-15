@@ -1,5 +1,5 @@
 !!!
-%header.header
+.header
   .header__bar.row
     %h1.grid-6
     - if user_signed_in?
@@ -18,7 +18,8 @@
     = image_tag "nayamuhito.png"
     .description__text
       .description__text__main
-        %p ただひたすら悩みや疑問を吐露する場です。
+        %p さあ、悩みや不満を吐露しましょう。
+        %p 閲覧や投稿にはユーザー登録が必要です。
 
   %h1 タイトル一覧
   %h1
@@ -30,3 +31,5 @@
           = link_to '読む', post, class: 'btn__details'
   .timage
     = image_tag "nayamuhito.png"
+  .description__text__main
+    %p いつもお疲れ様です。
