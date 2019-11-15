@@ -1,16 +1,42 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+header{
+  height: 60px;
+}
+
 body{
   background-color: whitesmoke;
 }
 
+.main-title {
+  font-size: 60px;
+}
+
 .title {
   font-size: 50px;
+  color: darkgoldenrod;
+}
+
+.header__bar.row {
+  text-align: center;
+}
+
+.post {
+  background-color: cornflowerblue;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.contents {
+  text-align: center;
 }
 
 .description{
-  display: flex;
   &__text {
     margin: 0 50px;
     &__checkbox {
@@ -20,4 +46,34 @@ body{
       color: red;
     }
   }
+}
+
+.btn__details {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+.details {
+  background-color: #fff;
+  width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  &__title {
+    color: darkgoldenrod;
+    font-size: 40px;
+  }
+  &__username {
+    color: lightcoral;
+  }
+  &__text {
+    font-size: 20px;
+  }
+}
+
+.input__title {
+  font-size: 20px;
+}
+
+.input__text {
+  font-size: 20px;
 }

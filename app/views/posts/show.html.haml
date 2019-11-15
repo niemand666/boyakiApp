@@ -1,9 +1,19 @@
-%p
-  %strong
-  = @post.title
-%p
-  %strong
-  = @post.content
+.details
+  %p
+    .details__username
+      投稿者
+      = @user.nickname
+      さん
+    .details__title
+      = @post.title
+  %p
+    .details__text
+      = simple_format(@post.content)
 
-= link_to '戻る', posts_path
-= link_to '編集', edit_post_path(@post)
+.details
+  = link_to '戻る', posts_path, class: 'post'
+  - if user_signed_in?
+    - if current_user.id == @post.user_id
+      = link_to '編集', edit_post_path(@post), class: 'post'
+      = link_to '削除', post_path(@post), method: :delete, class: 'post', data: { confirm: '削除しますか？' }
+  = image_tag "nayamuhito.png"
