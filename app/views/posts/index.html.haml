@@ -1,4 +1,16 @@
 !!!
+%header.header
+  .header__bar.row
+    %h1.grid-6
+    - if user_signed_in?
+      .user_nav.grid-6
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+        %a.post{:href => "/posts/new"} 投稿する
+    - else
+      .grid-6
+        = link_to "ログイン", new_user_session_path, class: 'post'
+        = link_to "新規登録", new_user_registration_path, class: 'post'
+
 .contents
   %p.title
     どいてもらっていいですか？
@@ -6,67 +18,17 @@
     = image_tag "nayamuhito.png"
     .description__text
       .description__text__main
-        %p 憂鬱と時間を持て余している方は当てはまる項目にチェックを入れていきましょう。
-      .description__text__checkbox
-        .description__text__checkbox__q
-          = check_box_tag :sample1
-          = label_tag :sample1, "休息が必要な時はグループで過ごすよりも、自分だけか、二、三人の親しい人と過ごす方が好ましい。"
-        .description__text__checkbox__q
-          = check_box_tag :sample2
-          = label_tag :sample2, "プロジェクトに携わるときは、細切れでなく、まとまった長い時間を与えてもらうほうがいい。"
-        .description__text__checkbox__q
-          = check_box_tag :sample3
-          = label_tag :sample3, "話をする前に予行練習を行うことがよくあり、ときには自分用にメモをつくる。"
-        .description__text__checkbox__q
-          = check_box_tag :sample4
-          = label_tag :sample4, "概して、話すより聞くほうが好きだ。"
-        .description__text__checkbox__q
-          = check_box_tag :sample5
-          = label_tag :sample5, "人から、物静かだ、謎めている、よそよそしい、冷静だと思われることがある。"
-        .description__text__checkbox__q
-          = check_box_tag :sample6
-          = label_tag :sample6, "祝い事は、大きなパーティを開くより、ひとりの人か、数人の親しい友達だけでしたい。"
+        %p 若干ネガティブ寄りの「ぼやき」を歓迎します。
 
-    = image_tag "nayamuhito.png"
-
-  .description
-    = image_tag "nayamuhito.png"
-    .description__text
-      .description__text__main
-        %p その調子です。
-      .description__text__checkbox
-        .description__text__checkbox__q
-          = check_box_tag :sample7
-          = label_tag :sample7, "通常、返事をしたり、話したりする前には、考えなくてはならない。"
-        .description__text__checkbox__q
-          = check_box_tag :sample8
-          = label_tag :sample8, "たいていの人が気づかないような細かいことに気づく。"
-        .description__text__checkbox__q
-          = check_box_tag :sample9
-          = label_tag :sample9, "ふたりの人が喧嘩をした直後には、緊迫した空気感を感じる。"
-        .description__text__checkbox__q
-          = check_box_tag :sample10
-          = label_tag :sample10, "何かをすると言ったら、ほとんどの場合、その通り実行する。"
-        .description__text__checkbox__q
-          = check_box_tag :sample11
-          = label_tag :sample11, "仕事に締め切りや緊張性があると、不安を感じる。"
-        .description__text__checkbox__q
-          = check_box_tag :sample12
-          = label_tag :sample12, "あまりに多くのことを同時進行していると、朦朧としてしまう。"
-
-    = image_tag "nayamuhito.png"
-
-%h1 全ての投稿一覧
-%table
+%h1 投稿一覧
+%h1
   %tr
-    %th タイトル
-    %th 内容
   - @posts.each do |post|
-    %tr
+    .title
       %td= post.title
-      %td= post.content
-      %td= link_to '詳細', post
-      %td= link_to '編集', edit_post_path(post)
-      %td= link_to '削除', post_path(post),                |
+      %td= link_to '読む', post
+      -#%td= link_to '編集', edit_post_path(post)
+      -#%td= link_to '削除', post_path(post),                |
           method: :delete, data: { confirm: '削除しますか？' } |
-= link_to '新しい投稿', new_post_path
+.timage
+  = image_tag "nayamuhito.png"
