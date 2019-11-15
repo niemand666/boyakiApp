@@ -4,31 +4,29 @@
     %h1.grid-6
     - if user_signed_in?
       .user_nav.grid-6
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
-        %a.post{:href => "/posts/new"} 投稿する
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'post'
+        %a.post{href: "/posts/new", class: 'post'} 投稿する
     - else
       .grid-6
         = link_to "ログイン", new_user_session_path, class: 'post'
         = link_to "新規登録", new_user_registration_path, class: 'post'
 
 .contents
-  %p.title
+  %p.main-title
     どいてもらっていいですか？
   .description
     = image_tag "nayamuhito.png"
     .description__text
       .description__text__main
-        %p 若干ネガティブ寄りの「ぼやき」を歓迎します。
+        %p ただひたすら悩みや疑問を吐露する場です。
 
-%h1 投稿一覧
-%h1
-  %tr
-  - @posts.each do |post|
-    .title
-      %td= post.title
-      %td= link_to '読む', post
-      -#%td= link_to '編集', edit_post_path(post)
-      -#%td= link_to '削除', post_path(post),                |
-          method: :delete, data: { confirm: '削除しますか？' } |
-.timage
-  = image_tag "nayamuhito.png"
+  %h1 タイトル一覧
+  %h1
+    %tr
+    - @posts.each do |post|
+      .title
+        = post.title
+        - if user_signed_in?
+          = link_to '読む', post, class: 'btn__details'
+  .timage
+    = image_tag "nayamuhito.png"
