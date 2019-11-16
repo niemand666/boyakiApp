@@ -49,6 +49,8 @@
           = link_to '読む', post, class: 'btn__details'
       = post.created_at.strftime("%Y/%m/%d")
       %hr{width: "50%"}/
+  .contents__pagenation
+    = paginate(@posts)
   .timage
     = image_tag "Dipressd_man.png", size:'200x200'
   .description__text__main

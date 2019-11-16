@@ -34,6 +34,11 @@ body{
 
 .contents {
   text-align: center;
+  &__pagenation {
+    font-size: 30px;
+    margin: 30px;
+    color: cornflowerblue;
+  }
 }
 
 .description{
@@ -69,7 +74,7 @@ body{
     margin-top: 20px;
   }
   &__username {
-    color: lightcoral;
+    color: red;
     margin-left: 20px;
   }
   &__timezone {
