@@ -11,7 +11,7 @@
         = link_to "ログイン", new_user_session_path, class: 'post'
         = link_to "新規登録", new_user_registration_path, class: 'post'
 
-%hr{:width => "90%"}/
+%hr{width:"90%"}/
 
 .contents
   %p.main-title
@@ -36,18 +36,20 @@
         %p 少しは気がラクになるはずだ。
         %br
         %p ※閲覧や投稿にはユーザー登録が必要です。
-        %hr{:width => "90%"}/
+        %hr{width: "90%"}/
 
   %h1 タイトル一覧
   %h1
     %tr
     - @posts.each do |post|
+      %span
+      = post.user.nickname
       .title
         = post.title
         - if user_signed_in?
           = link_to '読む', post, class: 'btn__details'
+          %hr{width: "50%"}/
   .timage
-    %hr{:width => "90%"}/
     = image_tag "Dipressd_man.png", size:'200x200'
   .description__text__main
     %p いつもお疲れ様です。
