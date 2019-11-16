@@ -10,29 +10,34 @@
       = simple_format(@post.content)
 
 .details
-  = link_to '戻る', posts_path, class: 'post'
+  = link_to '一覧に戻る', posts_path, class: 'post'
   - if user_signed_in?
     - if current_user.id == @post.user_id
       = link_to '編集', edit_post_path(@post), class: 'post'
       = link_to '削除', post_path(@post), method: :delete, class: 'post', data: { confirm: '削除しますか？' }
-  = image_tag "nayamuhito.png"
+  = image_tag "Dipressd_man.png", size:'200x200'
 
-  -#= form_for( [@post, @post.comments.build] ) do |f|
-    %p
-      = f.label :text, "コメント"
-      %br/
-      = f.hidden_field :post_id
-      = f.text_area :text, cols: 60, rows: 8
-    %p
-      = f.submit "コメント投稿", class: 'post'
+%hr{:width => "50%"}/
 
 .details
-  / ここからフォーム
   - if current_user
     コメントする
     = form_tag("/posts/#{@post.id}/comments", method: :post) do
-      %textarea{:cols => "60", :name => "text", :rows => "8"}
-      -#= f.text_area :text, cols: 60, rows: 8
-      -#= f.submit "コメント投稿", class: 'post'
+      %textarea{cols: "80", name: "text", rows: "10"}
       .btn
-        %input{:type => "submit", :value => "送信", class: 'post'}/
+        %input{type: "submit", value:  "送信する", class: 'post'}/
+
+.details
+  %h4 ＜コメント一覧＞
+  - if @comments
+    - @comments.each do |comment|
+      %p
+        %strong
+          = link_to comment.user.nickname, "/users/#{comment.user_id}"
+          %br
+        = comment.text
+        %hr{:width => "90%"}/
+
+.details
+  = link_to '一覧に戻る', posts_path, class: 'post'
+  

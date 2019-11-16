@@ -11,15 +11,32 @@
         = link_to "ログイン", new_user_session_path, class: 'post'
         = link_to "新規登録", new_user_registration_path, class: 'post'
 
+%hr{:width => "90%"}/
+
 .contents
   %p.main-title
     どいてもらっていいですか？
   .description
-    = image_tag "nayamuhito.png"
+    = image_tag "Dipressd_man.png", size:'500x500'
     .description__text
       .description__text__main
-        %p さあ、悩みや不満を吐露しましょう。
-        %p 閲覧や投稿にはユーザー登録が必要です。
+        %p かつて御釈迦様はこう言った。
+        %p この世の全ては「苦」であると。
+        %br
+        %p 魑魅魍魎が跳梁跋扈するこの現代社会で
+        %p 日々の生活に疲れ、負の感情を抱いてしまうのは至極当然であろう。
+        %br
+        %p そうした感情を溜め込み過ぎると、身を滅ぼす。
+        %p どこかに感情のはけ口が必要になる。
+        %br
+        %p そこで私はこう思った。
+        %p 「負の感情の受け皿になるアプリがあってもいいではないか」
+        %br
+        %p さあ、とにかく悩みや不満を書き出してみよう。
+        %p 少しは気がラクになるはずだ。
+        %br
+        %p ※閲覧や投稿にはユーザー登録が必要です。
+        %hr{:width => "90%"}/
 
   %h1 タイトル一覧
   %h1
@@ -30,6 +47,7 @@
         - if user_signed_in?
           = link_to '読む', post, class: 'btn__details'
   .timage
-    = image_tag "nayamuhito.png"
+    %hr{:width => "90%"}/
+    = image_tag "Dipressd_man.png", size:'200x200'
   .description__text__main
     %p いつもお疲れ様です。
