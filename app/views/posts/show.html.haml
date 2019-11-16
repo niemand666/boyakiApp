@@ -1,8 +1,9 @@
 .details
   %p
     .details__username
+      = image_tag(@post.user.image.url, class: 'icon_image')
+      %br
       = @user.nickname
-      さんの投稿
     .details__title
       = @post.title
   %p
@@ -20,7 +21,7 @@
     投稿日時
     = @post.created_at.strftime("%Y/%m/%d %H:%M")
 
-%hr{:width => "50%"}/
+%hr{width: "50%"}/
 
 .details
   - if current_user
@@ -34,18 +35,19 @@
   コメント
   = @comments_count
   件
-  %hr{:width => "90%"}/
+  %hr{width: "90%"}/
   - if @comments
     - @comments.each do |comment|
       %p
         .details__username
+          = image_tag(comment.user.image.url, class: 'icon_image')
           = comment.user.nickname
         .details__timezone
           = comment.created_at.strftime("%Y/%m/%d %H:%M")
           %br
         .details__comment
           = comment.text
-        %hr{:width => "90%"}/
+        %hr{width: "90%"}/
 
 .details
   = link_to '一覧に戻る', posts_path, class: 'post'
