@@ -17,10 +17,22 @@
       = link_to '削除', post_path(@post), method: :delete, class: 'post', data: { confirm: '削除しますか？' }
   = image_tag "nayamuhito.png"
 
-  = form_for( [@post, @post.comments.build] ) do |f|
+  -#= form_for( [@post, @post.comments.build] ) do |f|
     %p
       = f.label :text, "コメント"
       %br/
+      = f.hidden_field :post_id
       = f.text_area :text, cols: 60, rows: 8
     %p
       = f.submit "コメント投稿", class: 'post'
+
+.details
+  / ここからフォーム
+  - if current_user
+    コメントする
+    = form_tag("/posts/#{@post.id}/comments", method: :post) do
+      %textarea{:cols => "60", :name => "text", :rows => "8"}
+      -#= f.text_area :text, cols: 60, rows: 8
+      -#= f.submit "コメント投稿", class: 'post'
+      .btn
+        %input{:type => "submit", :value => "送信", class: 'post'}/
