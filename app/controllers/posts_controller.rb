@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.order("created_at DESC").page(params[:page]).per(5)
   end
 
 
@@ -26,6 +26,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = User.find_by(id: @post.user_id)
     @comments = @post.comments.includes(:user)
+    @comments_count = Comment.where(post_id: @post.id).count
   end
 
 
