@@ -38,11 +38,10 @@
         %p ※閲覧や投稿にはユーザー登録が必要です。
         %hr{width: "90%"}/
 
-  %h1 タイトル一覧
   %h1
     %tr
     - @posts.each do |post|
-      %span
+      %span 投稿者：
       = post.user.nickname
       .title
         = post.title
