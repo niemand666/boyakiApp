@@ -9,12 +9,17 @@ body{
   background-color: whitesmoke;
 }
 
+.user_info {
+  margin: 30px;
+}
+
 .main-title {
   font-size: 60px;
 }
 
 .title {
   font-size: 50px;
+  font-weight: normal;
   color: darkgoldenrod;
 }
 
@@ -44,9 +49,6 @@ body{
 .description{
   &__text {
     margin: 0 50px;
-    &__checkbox {
-      width: 800px;
-    }
     &__main {
       color: red;
     }
@@ -88,7 +90,8 @@ body{
 }
 
 .input__title {
-  font-size: 20px;
+  font-size: 25px;
+  width: 500px;
   background-color: aliceblue;
 }
 
@@ -98,4 +101,14 @@ body{
 
 textarea {
   background-color: aliceblue;
+}
+
+.icon_image {
+  width: 60px;
+  height: 60px;
+  //サイズ指定
+  border-radius: 100px;
+  //画像を丸くする
+  object-fit: cover;
+  //タテヨコ比を変えないままトリミング
 }
