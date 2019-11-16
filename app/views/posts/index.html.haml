@@ -26,8 +26,8 @@
         %p 魑魅魍魎が跳梁跋扈するこの現代社会で
         %p 日々の生活に疲れ、負の感情を抱いてしまうのは至極当然であろう。
         %br
-        %p そうした感情を溜め込み過ぎると、身を滅ぼす。
-        %p どこかに感情のはけ口が必要になる。
+        %p 負の感情を溜め込み過ぎると、身を滅ぼす。
+        %p どこかに感情のはけ口が必要だ。
         %br
         %p そこで私はこう思った。
         %p 「負の感情の受け皿になるアプリがあってもいいではないか」
@@ -47,7 +47,8 @@
         = post.title
         - if user_signed_in?
           = link_to '読む', post, class: 'btn__details'
-          %hr{width: "50%"}/
+      = post.created_at.strftime("%Y/%m/%d")
+      %hr{width: "50%"}/
   .timage
     = image_tag "Dipressd_man.png", size:'200x200'
   .description__text__main

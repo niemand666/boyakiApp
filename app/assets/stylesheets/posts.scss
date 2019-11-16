@@ -62,11 +62,23 @@ body{
     color: darkgoldenrod;
     font-size: 40px;
   }
-  &__username {
-    color: lightcoral;
-  }
   &__text {
     font-size: 20px;
+  }
+  &__posttimezone {
+    margin-top: 20px;
+  }
+  &__username {
+    color: lightcoral;
+    margin-left: 20px;
+  }
+  &__timezone {
+    font-size: 10px;
+    margin-left: 20px;
+  }
+  &__comment {
+    font-size: 15px;
+    margin: 25px;
   }
 }
 
