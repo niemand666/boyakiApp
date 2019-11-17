@@ -13,7 +13,6 @@
         = image_tag(current_user.image.url, class: 'icon_image')
         %br
         = @user.nickname
-        さん
     - else
       .grid-6
         = link_to "ログイン", new_user_session_path, class: 'post'
@@ -49,7 +48,9 @@
       %br
       = image_tag(post.user.image.url, class: 'icon_image')
       .title
+        「
         = post.title
+        」
         - if user_signed_in?
           = link_to '読む', post, class: 'btn__details'
       = post.created_at.strftime("%Y/%m/%d")
