@@ -6,6 +6,7 @@
     .field
       .field__circle-image
         = f.label :アイコン
+        = f.label :必須, class:'hissu'
         %br/
         - if @user.image.present?
           = image_tag @user.image, id: 'img_prev'
@@ -13,23 +14,31 @@
           = image_tag "sample.jpg", id:'img_prev'
         = f.file_field :image, class: 'field__dropzone', id: "user_img"
         %br
+        %hr{width:"90%"}/
       = f.label :ニックネーム
+      = f.label :必須, class:'hissu'
       %em (最大20文字)
       %br/
       = f.text_field :nickname, autofocus: true, maxlength: "20", class: 'input__title'
+      %hr{width:"90%"}/
     .field
       = f.label :メールアドレス
+      = f.label :必須, class:'hissu'
       %br/
       = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input__title'
+      %hr{width:"90%"}/
     .field
       = f.label :パスワード
+      = f.label :必須, class:'hissu'
       - if @minimum_password_length
         %em
           (#{@minimum_password_length} 文字以上)
       %br/
       = f.password_field :password, autocomplete: "new-password", class: 'input__title'
+      %hr{width:"90%"}/
     .field
       = f.label :パスワード（確認用）
+      = f.label :必須, class:'hissu'
       %br/
       = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input__title'
       %br/
