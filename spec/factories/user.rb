@@ -7,5 +7,5 @@ FactoryBot.define do
     image                 {File.open("#{Rails.root}/spec/fixtures/image.jpg")}
     sequence(:email)      {Faker::Internet.email}
   end
-
+  
 end
