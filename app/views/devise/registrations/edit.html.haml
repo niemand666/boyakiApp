@@ -55,7 +55,8 @@
   .contents
     = f.submit "更新する", class: 'post'
     %hr{width:"90%"}/
-    -#%h2 アカウント削除
-    -#%p
-      -##{button_to "このアカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除してよろしいですか？" }, method: :delete}
+    = link_to(user_registration_path(id: current_user.id), method: :delete, class: 'post', data: { confirm: '投稿とコメントも同時に削除されますが、よろしいですか？' }) do
+      %strong 退会する
+    %br
+    %hr{width:"90%"}/
     = link_to "戻る", :root
