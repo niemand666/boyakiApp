@@ -33,18 +33,18 @@ describe User do
       expect(user.errors[:password]).to include("can't be blank")
     end
 
-    # 5. imageが空では登録できないこと
-    it "is invalid without a image" do
-      user = build(:user, image: nil)
-      user.valid?
-      expect(user.errors[:image]).to include("can't be blank")
-    end
-
-    # 6. passwordが存在してもpassword_confirmationが空では登録できないこと
+    # 5. passwordが存在してもpassword_confirmationが空では登録できないこと
     it "is invalid without a password_confirmation although with a password" do
       user = build(:user, password_confirmation: "")
       user.valid?
       expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+    end
+
+    # 6. imageが空では登録できないこと
+    it "is invalid without a image" do
+      user = build(:user, image: nil)
+      user.valid?
+      expect(user.errors[:image]).to include("can't be blank")
     end
 
     # 7. nicknameが21文字以上であれば登録できないこと
