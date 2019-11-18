@@ -3,16 +3,19 @@
   .header__bar.row
     %h1.grid-6
     - if user_signed_in?
-      .user_nav.grid-6
-        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'post'
-        %a.post{href: "/posts/new", class: 'post'} 投稿する
-      %hr{width:"45%"}/
       .user_info
+        = link_to "アカウント編集", edit_user_registration_path, class: 'post'
+        %hr{width:"45%"}/
+        %br
         ユーザー
         %br
         = image_tag(current_user.image.url, class: 'icon_image')
         %br
         = @user.nickname
+      .user_nav.grid-6
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'post'
+        %a.post{href: "/posts/new", class: 'post'} 投稿する
+      %hr{width:"45%"}/
     - else
       .grid-6
         = link_to "ログイン", new_user_session_path, class: 'post'
