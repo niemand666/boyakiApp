@@ -47,16 +47,16 @@ describe User do
       expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
 
-    # 7. nicknameが7文字以上であれば登録できないこと
+    # 7. nicknameが21文字以上であれば登録できないこと
     it "is invalid with a nickname that has more than 21 characters " do
-      user = build(:user, nickname: "aaaaaaaaaaaaaaaaaaaaa")
+      user = build(:user, nickname: Faker::Lorem.characters(number: 21))
       user.valid?
       expect(user.errors[:nickname]).to include("is too long (maximum is 20 characters)")
     end
 
-    # 8. nicknameが6文字以下では登録できること
+    # 8. nicknameが20文字以下では登録できること
     it "is valid with a nickname that has less than 20 characters " do
-      user = build(:user, nickname: "aaaaaaaaaaaaaaaaaaaa")
+      user = build(:user, nickname: Faker::Lorem.characters(number: 20))
       expect(user).to be_valid
     end
 
