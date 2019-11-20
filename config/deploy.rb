@@ -45,7 +45,7 @@ namespace :deploy do
 #  end
 #  before :starting, 'deploy:upload'
 #  after :finishing, 'deploy:cleanup'
-#end
+end
 
 # set :default_env, {
 #  rbenv_root: "/usr/local/rbenv",
