@@ -35,6 +35,10 @@ namespace :deploy do
  task :restart do
    invoke 'unicorn:restart'
  end
+
+set :unicorn_pid, "/var/tmp/unicorn.pid"
+set :unicorn_config_path, "/var/www/boyakiApp/current/config/unicorn/production/unicorn.rb"
+set :unicorn_rack_env, "production"
 # restartだとキャッシュが残るので下記の書き方でも良い
 # task :restart do
 #   invoke 'unicorn:stop'
@@ -52,6 +56,7 @@ namespace :deploy do
   end
   before :starting, 'deploy:upload'
   after :finishing, 'deploy:cleanup'
+
 end
 
 
