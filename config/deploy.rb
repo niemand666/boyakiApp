@@ -41,7 +41,7 @@ set :unicorn_config_path, "/var/www/boyakiApp/current/config/unicorn.rb"
 set :unicorn_rack_env, "production"
 # restartだとキャッシュが残るので下記の書き方でも良い
 task :restart do
-  invoke 'unicorn:stop'
+  #invoke 'unicorn:stop'
   invoke 'unicorn:start'
 end
 
