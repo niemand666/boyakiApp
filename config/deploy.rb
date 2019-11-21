@@ -32,18 +32,18 @@ set :linked_files, %w{config/master.key}
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
 
- task :restart do
-   invoke 'unicorn:restart'
- end
+ #task :restart do
+  # invoke 'unicorn:restart'
+ #end
 
 set :unicorn_pid, "/var/tmp/unicorn.pid"
 set :unicorn_config_path, "/var/www/boyakiApp/current/config/unicorn.rb"
 set :unicorn_rack_env, "production"
 # restartだとキャッシュが残るので下記の書き方でも良い
-# task :restart do
-#   invoke 'unicorn:stop'
-#   invoke 'unicorn:start'
-# end
+task :restart do
+  invoke 'unicorn:stop'
+  invoke 'unicorn:start'
+end
 
   desc 'upload master.key'
   task :upload do
