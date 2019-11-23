@@ -36,7 +36,6 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
-
  desc 'upload master.key'
   task :upload do
     on roles(:app) do |_host|
