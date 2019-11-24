@@ -22,7 +22,6 @@ development:
   database: app_name_development
   username: root
   password: password
-  database: docker_development
   host: db
 
 # Warning: The database defined as "test" will be erased and
@@ -33,7 +32,6 @@ test:
   database: app_name_test
   username: root
   password: password
-  database: docker_test
   host: db
 
 # As with config/secrets.yml, you never want to store sensitive information,
