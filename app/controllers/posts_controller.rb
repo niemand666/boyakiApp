@@ -4,6 +4,11 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(5)
     @user = current_user
+
+    # 検索オブジェクト
+    @search = Post.ransack(params[:q])
+    # 検索結果
+    @results = @search.result
   end
 
 
@@ -55,6 +60,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title,:content).merge(user_id: current_user.id)
   end
 
+  
   def find_post
     @post = Post.find(params[:id])
   end
