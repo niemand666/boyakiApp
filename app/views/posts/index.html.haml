@@ -58,6 +58,9 @@
             = link_to '読む', result, class: 'btn__details'
         = result.created_at.strftime("%Y/%m/%d")
         %br
+        .contents__likes
+          いいね:
+          = result.likes.count
         %hr{width: "50%"}/
 
     - else
@@ -77,6 +80,9 @@
             = link_to '読む', post, class: 'btn__details'
         = post.created_at.strftime("%Y/%m/%d")
         %br
+        .contents__likes
+          いいね:
+          = post.likes.count
         %hr{width: "50%"}/
 
   .contents__pagenation
