@@ -2,12 +2,12 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(5)
+    @posts = Post.includes(:user)
     @user = current_user
     # 検索オブジェクト
     @search = Post.ransack(params[:q])
     # 検索結果
-    @results = @search.result
+    @results = @search.result.order("created_at DESC").page(params[:page]).per(5)
   end
 
   def new

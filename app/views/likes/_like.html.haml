@@ -1,0 +1,4 @@
+- if current_user.already_liked?(@post)
+  = button_to 'いいね', post_like_path(@post), method: :delete, remote: true, class: 'like_button_on'
+- else
+  = button_to 'いいね', post_likes_path(@post), remote: true, class: 'like_button'

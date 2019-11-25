@@ -60,33 +60,15 @@
         %br
         .contents__likes
           いいね:
-          = result.likes.count
+          = result.liked_users.count
         %hr{width: "50%"}/
-
     - else
       .description__text__main
         該当する記事はありません m(_ _)m
       %hr{width: "50%"}/
-      - @posts.each do |post|
-        %span 投稿者：
-        = post.user.nickname
-        %br
-        = image_tag(post.user.image.url, class: 'icon_image')
-        .title
-          「
-          = post.title
-          」
-          - if user_signed_in?
-            = link_to '読む', post, class: 'btn__details'
-        = post.created_at.strftime("%Y/%m/%d")
-        %br
-        .contents__likes
-          いいね:
-          = post.likes.count
-        %hr{width: "50%"}/
 
   .contents__pagenation
-    = paginate(@posts)
+    = paginate(@results)
   .timage
     = image_tag "Dipressd_man.png", size:'200x200'
   .description__text__main
