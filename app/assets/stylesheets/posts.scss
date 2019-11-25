@@ -58,6 +58,10 @@ body{
     margin: 30px;
     color: cornflowerblue;
   }
+  &__likes {
+    font-weight: normal;
+    font-size: 20px;
+  }
 }
 
 .description{
@@ -103,6 +107,9 @@ body{
     font-size: 15px;
     margin: 25px;
   }
+  &__box_button_like {
+    display: inline-block
+  }
 }
 
 .input__title {
@@ -143,4 +150,26 @@ textarea {
   padding: 5px;
   background-color: red;
   color: #fff;
+}
+
+.like_button{
+  background: #fff;
+  line-height: 42px;
+  color: #6d3701;
+  font-size: 14px;
+  display: inline-block;
+  padding: 0 18px;
+  border-radius: 100px;
+  font-weight: bold;
+}
+
+.like_button_on{
+  background: linear-gradient(to right, #feb400, #FFE300);
+  line-height: 42px;
+  color: #6d3701;
+  font-size: 14px;
+  display: inline-block;
+  padding: 0 18px;
+  border-radius: 100px;
+  font-weight: bold;
 }

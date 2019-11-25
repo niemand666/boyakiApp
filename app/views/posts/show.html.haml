@@ -20,7 +20,12 @@
   .details__posttimezone
     投稿日時
     = @post.created_at.strftime("%Y/%m/%d %H:%M")
+    %hr{width: "90%"}/
 
+  .details__box_button_like
+    = render partial: 'likes/like', locals: { post: @post }
+    いいね件数:
+    = @post.likes.count
 %hr{width: "50%"}/
 
 .details
@@ -51,4 +56,3 @@
 
 .details
   = link_to '一覧に戻る', posts_path, class: 'post'
-  

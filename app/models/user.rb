@@ -6,6 +6,13 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
+  
+  # ユーザーが投稿に対して、すでにいいねをしているのかどうかを判定する
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
+  end
 
   mount_uploader :image, ImageUploader
 
