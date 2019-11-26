@@ -11,7 +11,7 @@
       = simple_format(@post.content)
 
 .details
-  = link_to '一覧に戻る', posts_path, class: 'post'
+  = link_to '一覧に戻る', root_path, class: 'post'
   - if user_signed_in?
     - if current_user.id == @post.user_id
       = link_to '編集', edit_post_path(@post), class: 'post'
@@ -26,8 +26,14 @@
     いいねボタン
     #favorite_btn
       = render partial: 'likes/like', locals: { post: @post, like: @like }
+    %hr{width: "50%"}/
+  .liked-user
+    いいねしたユーザー
+    %br
+    - if @likes
+      - @likes.each do |like|
+        = image_tag(like.user.image.url, class: 'liked-users')
 %hr{width: "50%"}/
-
 .details
   - if current_user
     コメントする
@@ -43,16 +49,15 @@
   %hr{width: "90%"}/
   - if @comments
     - @comments.each do |comment|
-      %p
-        .details__username
-          = image_tag(comment.user.image.url, class: 'icon_image')
-          = comment.user.nickname
-        .details__timezone
-          = comment.created_at.strftime("%Y/%m/%d %H:%M")
-          %br
-        .details__comment
-          = comment.text
-        %hr{width: "90%"}/
+      .details__username
+        = image_tag(comment.user.image.url, class: 'liked-users')
+        = comment.user.nickname
+      .details__timezone
+        = comment.created_at.strftime("%Y/%m/%d %H:%M")
+        %br
+      .details__comment
+        = comment.text
+      %hr{width: "90%"}/
 
 .details
-  = link_to '一覧に戻る', posts_path, class: 'post'
+  = link_to '一覧に戻る', root_path, class: 'post'
