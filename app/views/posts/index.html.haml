@@ -56,11 +56,16 @@
           」
           - if user_signed_in?
             = link_to '読む', result, class: 'btn__details'
-        = result.created_at.strftime("%Y/%m/%d")
-        %br
         .contents__likes
-          いいね:
+          【いいね:
           = result.liked_users.count
+          件】
+          【コメント:
+          = result.comments.count
+          件】
+          %br
+          投稿日時
+          = result.created_at.strftime("%Y/%m/%d")
         %hr{width: "50%"}/
     - else
       .description__text__main

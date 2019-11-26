@@ -1,17 +1,14 @@
 class LikesController < ApplicationController
   before_action :set_variables
+
   def create
-    like = current_user.likes.new(post_id: @post.id)
-    #@like = current_user.likes.create(post_id: params[:post_id])
-    like.save
-    #redirect_back(fallback_location: root_path)
+    @like = current_user.likes.create(post_id: params[:post_id])
+    render 'like-btn.js.erb'
   end
 
   def destroy
-    like = current_user.likes.find_by(post_id: @post.id)
-    #@like = Like.find_by(post_id: params[:post_id], user_id: current_user.id)
-    like.destroy
-    #redirect_back(fallback_location: root_path)
+    @like = Like.find_by(post_id: params[:post_id], user_id: current_user.id).destroy
+    render 'like-btn.js.erb'
   end
 
   private

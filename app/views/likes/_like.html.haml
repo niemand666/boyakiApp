@@ -1,14 +1,9 @@
--#- if current_user.already_liked?(@post)
-  = button_to 'いいね', post_like_path(@post), method: :delete, remote: true, class: 'like_button_on'
--#- else
-  = button_to 'いいね', post_likes_path(@post), remote: true, class: 'like_button'
-
 .like-link{id: "#like-link-#{post.id}"}
 - if current_user.likes.find_by(post_id: post.id)
   = link_to create_path(post.id), method: :delete, remote: true do
-    .iine__button
-      ❤️#{post.likes.count}
+    .like_button_on
+      ❤️#{post.likes.count} 件のいいね
 - else
   = link_to destroy_path(post.id), method: :post, remote: true do
-    .iine__button
-      ♡️ #{post.likes.count}
+    .like_button
+      ♡️ #{post.likes.count} 件のいいね
