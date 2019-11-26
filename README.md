@@ -64,7 +64,7 @@ Things you may want to cover:
 - belongs_to :post
 
 
-## comment table
+## comments table
 |Column|Type|Options|
 |------|----|-------|
 |text|string|null: false|
