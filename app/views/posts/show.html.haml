@@ -24,6 +24,7 @@
 
   .details__box_button_like
     = render partial: 'likes/like', locals: { post: @post }
+    -#= render partial: 'posts/posts', collection: @posts, as: :post
     いいね件数:
     = @post.likes.count
 %hr{width: "50%"}/
