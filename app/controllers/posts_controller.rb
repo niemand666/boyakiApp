@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:user)
     @user = current_user
     # 検索オブジェクト
     @search = Post.ransack(params[:q])
