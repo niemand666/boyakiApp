@@ -44,7 +44,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |title|string|null: false|
-|content|string|null: false|
+|content|text|null: false|
 
 ### Association
 - belongs_to :user
