@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     @comments = @post.comments.includes(:user).order("created_at DESC")
     @comments_count = Comment.where(post_id: @post.id).count
     @like = Like.new
+    @likes = @post.likes.includes(:user)
   end
 
   def edit
