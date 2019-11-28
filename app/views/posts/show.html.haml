@@ -1,8 +1,10 @@
 .details
   %p
     .details__username
-      = image_tag(@post.user.image.url, class: 'icon_image')
       = @user.nickname
+      %br
+      = link_to user_path(@post.user) do
+        = image_tag(@post.user.image.url, class: 'icon_image')
     .details__title
       = @post.title
   %p
@@ -19,44 +21,45 @@
   .details__posttimezone
     投稿日時
     = @post.created_at.strftime("%Y/%m/%d %H:%M")
-    %hr{width: "90%"}/
+    %hr{width: "100%"}/
 
   .details__box_button_like
     いいねボタン
     #favorite_btn
       = render partial: 'likes/like', locals: { post: @post, like: @like }
-    %hr{width: "50%"}/
+    %hr{width: "100%"}/
   .liked-user
     いいねしたユーザー
     %br
     - if @likes
       - @likes.each do |like|
-        = image_tag(like.user.image.url, class: 'liked-users')
+        = link_to user_path(like.user) do
+          = image_tag(like.user.image.url, class: 'liked-users')
 %hr{width: "50%"}/
-.details
-  - if current_user
-    コメントする
-    = form_tag("/posts/#{@post.id}/comments", method: :post) do
-      %textarea{cols: "80", name: "text", rows: "10"}
-      .btn
-        %input{type: "submit", value:  "送信する", class: 'post'}/
 
 .details
-  コメント
-  = @comments_count
-  件
-  %hr{width: "90%"}/
-  - if @comments
-    - @comments.each do |comment|
-      .details__username
-        = image_tag(comment.user.image.url, class: 'liked-users')
-        = comment.user.nickname
-      .details__timezone
-        = comment.created_at.strftime("%Y/%m/%d %H:%M")
-        %br
-      .details__comment
-        = comment.text
-      %hr{width: "90%"}/
+  コメントする
+  = form_with(model:[ @post, @post.comments.build ], local: true) do |f|
+    = f.text_area :text, class:'comment-area'
+    .details__comment-btn
+      = f.submit 'コメントする', class: 'post'
+      %p
+  .details__comments-list
+    コメント
+    = @comments_count
+    件
+    %hr{width: "100%"}/
+    - if @comments
+      - @comments.each do |comment|
+        .details__username
+          = image_tag(comment.user.image.url, class: 'liked-users')
+          = comment.user.nickname
+        .details__timezone
+          = comment.created_at.strftime("%Y/%m/%d %H:%M")
+          %br
+        .details__comment
+          = simple_format(comment.text)
+        %hr{width: "100%"}/
 
 .details
   = link_to 'トップページ', root_path, class: 'post'

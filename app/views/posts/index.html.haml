@@ -6,9 +6,6 @@
       .user_info
         = link_to "マイページ", user_path(@user), class: 'post'
         %hr{width:"45%"}/
-        %br
-        ユーザー
-        %br
         = image_tag(current_user.image.url, class: 'icon_image')
         %br
         = @user.nickname
@@ -35,22 +32,31 @@
         %p
         %br
         %p ※閲覧や投稿にはユーザー登録が必要です。
-        %hr{width: "90%"}/
+  %hr{width: "90%"}/
 
   %h1
     = search_form_for @search do |f|
-      = f.search_field :title_or_content_cont, class: 'input__search'
+      = f.search_field :title_or_content_cont, class: 'input__search', placeholder: 'キーワード検索'
       = f.submit '検索', class: 'post'
       %hr{width: "50%"}/
 
     %tr
     - if @results.any?
       - @results.each do |result|
-        = link_to user_path(result.user), class:'details__username' do
-          = result.user.nickname
-        %br
-        = link_to user_path(result.user) do
-          = image_tag(result.user.image.url, class: 'icon_image')
+
+        - if user_signed_in?
+          = link_to user_path(result.user), class:'details__userinfo' do
+            = result.user.nickname
+          %br
+          = link_to user_path(result.user) do
+            = image_tag(result.user.image.url, class: 'icon_image')
+        - else
+          = link_to new_user_registration_path, class:'details__userinfo' do
+            = result.user.nickname
+          %br
+          = link_to new_user_registration_path do
+            = image_tag(result.user.image.url, class: 'icon_image')
+
         .title
           = result.title
           - if user_signed_in?
