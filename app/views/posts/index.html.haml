@@ -5,20 +5,20 @@
     - if user_signed_in?
       .user_info
         = link_to "マイページ", user_path(@user), class: 'post'
-        %hr{width:"45%"}/
+        %hr{width:"30%"}/
         = image_tag(current_user.image.url, class: 'icon_image')
         %br
         = @user.nickname
       .user_nav.grid-6
         = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'post'
         %a.post{href: "/posts/new", class: 'post'} 投稿する
-      %hr{width:"45%"}/
+      %hr{width:"30%"}/
     - else
       .grid-6
         = link_to "ログイン", new_user_session_path, class: 'post'
         = link_to "新規登録", new_user_registration_path, class: 'post'
 
-%hr{width:"90%"}/
+%hr{width:"50%"}/
 
 .contents
   %p.main-title
@@ -29,11 +29,11 @@
       .description__text__main
         %p 「やってらんねえよなぁ、、、」
         %br
-        %p
+        %p という気分の人たちが集う場所。
         %br
         %p ※閲覧や投稿にはユーザー登録が必要です。
 
-  %hr{width: "90%"}/
+  %hr{width: "50%"}/
 
   = render 'search_form'
 
