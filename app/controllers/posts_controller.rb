@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
-  before_action :set_search, only: [:index]
+  before_action :set_search, only: :index
 
   def index
     @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(5)
