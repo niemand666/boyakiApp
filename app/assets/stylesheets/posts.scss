@@ -35,6 +35,8 @@ body{
   font-size: 50px;
   font-weight: normal;
   color: darkgoldenrod;
+  width: 500px;
+  margin: 0 auto;
 }
 
 .header__bar.row {
@@ -76,8 +78,10 @@ body{
 .btn__details {
   text-decoration: none;
   color: cornflowerblue;
+  background: antiquewhite;
   font-size: 30px;
   font-weight: bold;
+  padding: 10px;
 }
 
 .details {
@@ -96,8 +100,9 @@ body{
     margin-top: 20px;
   }
   &__username {
-    color: red;
-    margin-left: 20px;
+    color: black;
+    //margin-left: 20px;
+    text-decoration: none;
   }
   &__timezone {
     font-size: 10px;

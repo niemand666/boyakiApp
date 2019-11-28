@@ -3,7 +3,6 @@
     .details__username
       = image_tag(@post.user.image.url, class: 'icon_image')
       = @user.nickname
-      さんの投稿
     .details__title
       = @post.title
   %p
@@ -11,7 +10,7 @@
       = simple_format(@post.content)
 
 .details
-  = link_to '一覧に戻る', root_path, class: 'post'
+  = link_to 'トップページ', root_path, class: 'post'
   - if user_signed_in?
     - if current_user.id == @post.user_id
       = link_to '編集', edit_post_path(@post), class: 'post'
@@ -60,4 +59,4 @@
       %hr{width: "90%"}/
 
 .details
-  = link_to '一覧に戻る', root_path, class: 'post'
+  = link_to 'トップページ', root_path, class: 'post'
