@@ -16,6 +16,7 @@
     %hr{width:"50%"}/
 
     = f.label :ニックネーム
+    = f.label :必須, class:'hissu'
     %em (最大20文字)
     %br/
     = f.text_field :nickname, autofocus: true, maxlength: "20", class: 'input__title'
@@ -23,6 +24,7 @@
     %hr{width:"50%"}/
 
     = f.label :メールアドレス
+    = f.label :必須, class:'hissu'
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input__title'
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -56,7 +58,10 @@
     = f.submit "更新する", class: 'post'
     %hr{width:"50%"}/
     = link_to(user_registration_path(id: current_user.id), method: :delete, class: 'post', data: { confirm: '投稿とコメントも同時に削除されますが、よろしいですか？' }) do
-      %strong 退会する
-    %br
+      退会する
     %hr{width:"50%"}/
-    = link_to "戻る", :root
+    .contents__logo
+      = image_tag "Dipressd_man.png", size:'200x200'
+      %hr{width:"50%"}/
+    = link_to "マイページに戻る", user_path(@user), class: 'post'
+    = link_to "トップページ", root_path, class: 'post'

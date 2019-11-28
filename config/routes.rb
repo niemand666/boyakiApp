@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+  get  'search', to: 'posts#search'
   post '/like/:post_id', to: 'likes#create', as: 'create'
   delete '/like/:post_id', to: 'likes#destroy', as: 'destroy'
 end
