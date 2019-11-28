@@ -2,6 +2,7 @@
   %p
     .details__username
       = @user.nickname
+      さんの投稿
       %br
       = link_to user_path(@post.user) do
         = image_tag(@post.user.image.url, class: 'icon_image')
