@@ -50,10 +50,10 @@
           = link_to user_path(post.user) do
             = image_tag(post.user.image.url, class: 'icon_image')
         - else
-          = link_to new_user_registration_path, class:'details__userinfo' do
+          = link_to new_user_session_path, class:'details__userinfo' do
             = post.user.nickname
           %br
-          = link_to new_user_registration_path do
+          = link_to new_user_session_path do
             = image_tag(post.user.image.url, class: 'icon_image')
 
         .title
