@@ -1,10 +1,10 @@
 .contents
   %h2 アカウント編集
-%hr{width:"90%"}/
+%hr{width:"50%"}/
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = render "devise/shared/error_messages", resource: resource
   .contents
-    = f.label :アイコン変更
+    = f.label :アイコン
     %br
     - if current_user.persisted? && current_user.image?
       .field__circle-image
@@ -13,14 +13,14 @@
       = image_tag 'sample.png'
       = f.hidden_field :avatar_cache
     = f.file_field :image, id: "user_img"
-    %hr{width:"90%"}/
+    %hr{width:"50%"}/
 
     = f.label :ニックネーム
     %em (最大20文字)
     %br/
     = f.text_field :nickname, autofocus: true, maxlength: "20", class: 'input__title'
     %br/
-    %hr{width:"90%"}/
+    %hr{width:"50%"}/
 
     = f.label :メールアドレス
     %br/
@@ -28,7 +28,7 @@
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     %div
       Currently waiting confirmation for: #{resource.unconfirmed_email}
-  %hr{width:"90%"}/
+  %hr{width:"50%"}/
   .contents
     パスワード変更（変更しない場合は空欄のまま更新してください）
     %br
@@ -45,18 +45,18 @@
     = f.label :新パスワード（確認用）
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input__title'
-    %hr{width:"90%"}/
+    %hr{width:"50%"}/
   .contents
     = f.label :現在のパスワード
     = f.label :必須, class:'hissu'
     %br/
     = f.password_field :current_password, autocomplete: "current-password", class: 'input__title'
-  %hr{width:"90%"}/
+  %hr{width:"50%"}/
   .contents
     = f.submit "更新する", class: 'post'
-    %hr{width:"90%"}/
+    %hr{width:"50%"}/
     = link_to(user_registration_path(id: current_user.id), method: :delete, class: 'post', data: { confirm: '投稿とコメントも同時に削除されますが、よろしいですか？' }) do
       %strong 退会する
     %br
-    %hr{width:"90%"}/
+    %hr{width:"50%"}/
     = link_to "戻る", :root

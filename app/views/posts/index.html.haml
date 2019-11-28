@@ -4,7 +4,7 @@
     %h1.grid-6
     - if user_signed_in?
       .user_info
-        = link_to "アカウント編集", edit_user_registration_path, class: 'post'
+        = link_to "マイページ", user_path(@user), class: 'post'
         %hr{width:"45%"}/
         %br
         ユーザー
@@ -46,14 +46,13 @@
     %tr
     - if @results.any?
       - @results.each do |result|
-        %span 投稿者：
-        = result.user.nickname
+        = link_to user_path(result.user), class:'details__username' do
+          = result.user.nickname
         %br
-        = image_tag(result.user.image.url, class: 'icon_image')
+        = link_to user_path(result.user) do
+          = image_tag(result.user.image.url, class: 'icon_image')
         .title
-          「
           = result.title
-          」
           - if user_signed_in?
             = link_to '読む', result, class: 'btn__details'
         .contents__likes

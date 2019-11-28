@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     # 検索オブジェクト
     @search = Post.ransack(params[:q])
     # 検索結果
-    @results = @search.result.order("created_at DESC").page(params[:page]).per(5)
+    @results = @search.result.includes(:user).order("created_at DESC").page(params[:page]).per(5)
   end
 
   def new

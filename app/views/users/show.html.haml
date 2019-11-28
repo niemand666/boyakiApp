@@ -1,0 +1,28 @@
+.details
+  .details__username
+    = image_tag(@user.image.url, class: 'icon_image')
+    %br
+    =  @user.nickname
+    さんの投稿一覧
+    - if @user.id == current_user.id
+      = link_to "アカウント編集", edit_user_registration_path, class: 'post'
+    %hr{width: "90%"}/
+    %br
+  - @posts.each do |post|
+    = post.created_at.strftime("%Y/%m/%d")
+    .title
+      = post.title
+      = link_to '読む', post, class: 'btn__details'
+      %br
+    .contents__likes
+      【いいね:
+      = post.liked_users.count
+      件】
+      【コメント:
+      = post.comments.count
+      件】
+      %hr{width: "90%"}/
+  .contents__pagenation
+    = paginate(@posts)
+    %hr{width: "90%"}/
+  = link_to "トップページ", :root, class: 'post'
