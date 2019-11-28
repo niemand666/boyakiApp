@@ -32,45 +32,44 @@
         %p
         %br
         %p ※閲覧や投稿にはユーザー登録が必要です。
+
   %hr{width: "90%"}/
 
-  %h1
-    = search_form_for @search do |f|
-      = f.search_field :title_or_content_cont, class: 'input__search', placeholder: 'キーワード検索'
-      = f.submit '検索', class: 'post'
-      %hr{width: "50%"}/
+  = render 'search_form'
 
-    %tr
-    - if @results.any?
-      - @results.each do |result|
+  %hr{width: "50%"}/
+
+  %tr
+    - if @posts.any?
+      - @posts.each do |post|
 
         - if user_signed_in?
-          = link_to user_path(result.user), class:'details__userinfo' do
-            = result.user.nickname
+          = link_to user_path(post.user), class:'details__userinfo' do
+            = post.user.nickname
           %br
-          = link_to user_path(result.user) do
-            = image_tag(result.user.image.url, class: 'icon_image')
+          = link_to user_path(post.user) do
+            = image_tag(post.user.image.url, class: 'icon_image')
         - else
           = link_to new_user_registration_path, class:'details__userinfo' do
-            = result.user.nickname
+            = post.user.nickname
           %br
           = link_to new_user_registration_path do
-            = image_tag(result.user.image.url, class: 'icon_image')
+            = image_tag(post.user.image.url, class: 'icon_image')
 
         .title
-          = result.title
+          = post.title
           - if user_signed_in?
-            = link_to '読む', result, class: 'btn__details'
+            = link_to '読む', post, class: 'btn__details'
         .contents__likes
           【いいね:
-          = result.liked_users.count
+          = post.liked_users.count
           件】
           【コメント:
-          = result.comments.count
+          = post.comments.count
           件】
           %br
           投稿日時
-          = result.created_at.strftime("%Y/%m/%d")
+          = post.created_at.strftime("%Y/%m/%d")
         %hr{width: "50%"}/
     - else
       .description__text__main
@@ -78,7 +77,7 @@
       %hr{width: "50%"}/
 
   .contents__pagenation
-    = paginate(@results)
+    = paginate(@posts)
   .timage
     = image_tag "Dipressd_man.png", size:'200x200'
   .description__text__main

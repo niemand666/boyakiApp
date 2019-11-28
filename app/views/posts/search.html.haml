@@ -1,0 +1,47 @@
+.contents
+  = render 'search_form'
+  %hr{width: "50%"}/
+  検索結果
+  %hr{width: "50%"}/
+  - if @results.any?
+    - @results.each do |result|
+
+      - if user_signed_in?
+        = link_to user_path(result.user), class:'details__userinfo' do
+          = result.user.nickname
+        %br
+        = link_to user_path(result.user) do
+          = image_tag(result.user.image.url, class: 'icon_image')
+      - else
+        = link_to new_user_registration_path, class:'details__userinfo' do
+          = result.user.nickname
+        %br
+        = link_to new_user_registration_path do
+          = image_tag(result.user.image.url, class: 'icon_image')
+
+      .title
+        = result.title
+        - if user_signed_in?
+          = link_to '読む', result, class: 'btn__details'
+      .contents__likes
+        【いいね:
+        = result.liked_users.count
+        件】
+        【コメント:
+        = result.comments.count
+        件】
+        %br
+        投稿日時
+        = result.created_at.strftime("%Y/%m/%d")
+      %hr{width: "50%"}/
+  - else
+    .description__text__main
+      該当する記事はありません m(_ _)m
+    %hr{width: "50%"}/
+
+  .contents__pagenation
+    = paginate(@results)
+  .timage
+    = image_tag "Dipressd_man.png", size:'200x200'
+    %p
+  = link_to "トップページ", :root, class: 'post'
