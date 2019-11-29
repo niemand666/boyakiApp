@@ -25,7 +25,7 @@ class User < ApplicationRecord
     relationship.destroy if relationship
   end
 
-  # フォローしている User 達を取得し、include?(other_user) によって other_user が含まれていないかを確認する。
+  # フォローしている User を取得し、include?(other_user) によって other_user が含まれていないかを確認する。
   def following?(other_user)
     self.followings.include?(other_user)
   end

@@ -3,6 +3,7 @@
     - if @user.id == current_user.id
       = link_to "アカウント編集", edit_user_registration_path, class: 'post'
       %hr{width: "50%"}/
+
     = @user.nickname
     %br
     = image_tag(@user.image.url, class: 'icon_image')
@@ -11,14 +12,16 @@
     %p
     - @user ||= current_user
     .user-stats
-      = link_to following_user_path(@user) do
+      ：
+      = link_to following_user_path(@user), class: 'user-status' do
         = @user.followings.count
         フォロー
       ：
-      = link_to followers_user_path(@user) do
+      = link_to followers_user_path(@user), class: 'user-status' do
         = @user.followers.count
         フォロワー
     %hr{width: "50%"}/
+
     投稿
     = @user.posts.count
     件
@@ -39,6 +42,7 @@
       = post.comments.count
       件】
       %hr{width: "100%"}/
+      
   .contents__pagenation
     = paginate(@posts)
   = link_to "トップページ", :root, class: 'post'
