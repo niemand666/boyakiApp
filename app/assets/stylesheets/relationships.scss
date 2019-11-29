@@ -1,0 +1,29 @@
+// Place all the styles related to the relationships controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.follows{
+  width: 120px;
+  background: lightgray;
+  line-height: 42px;
+  color: #6d3701;
+  font-size: 14px;
+  display: inline-block;
+  padding: 0 18px;
+  border-radius: 100px;
+  border-color:#aaaaaa #444444 #444444 #aaaaaa;
+  font-weight: bold;
+}
+
+.follow-now{
+  width: 120px;
+  background: linear-gradient(to right, #feb400, #FFE300);
+  line-height: 42px;
+  color: #6d3701;
+  font-size: 14px;
+  display: inline-block;
+  padding: 0 18px;
+  border-radius: 100px;
+  border-color:#aaaaaa #444444 #444444 #aaaaaa;
+  font-weight: bold;
+}
