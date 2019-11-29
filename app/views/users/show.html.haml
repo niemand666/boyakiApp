@@ -6,8 +6,22 @@
     = @user.nickname
     %br
     = image_tag(@user.image.url, class: 'icon_image')
+
+    = render 'relationships/follow_button', user: @user
+
+    - @user ||= current_user
+    .user-stats
+      = link_to following_user_path(@user) do
+        = @user.followings.count
+        フォロー
+      ：
+      = link_to followers_user_path(@user) do
+        = @user.followers.count
+        フォロワー
     %hr{width: "50%"}/
-    投稿一覧
+    投稿
+    = @user.posts.count
+    件
     %hr{width: "100%"}/
 
   - @posts.each do |post|

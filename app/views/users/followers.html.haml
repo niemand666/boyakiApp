@@ -1,0 +1,8 @@
+.details
+  .details__userinfo
+    %hr{width: "50%"}/
+    = @user.nickname
+    %br
+    = image_tag(@user.image.url, class: 'icon_image')
+    %hr{width: "50%"}/
+    フォロワー
