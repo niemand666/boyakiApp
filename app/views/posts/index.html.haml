@@ -1,7 +1,7 @@
-!!!
 .header
   .header__bar.row
     %h1.grid-6
+    
     - if user_signed_in?
       .user_info
         = link_to "マイページ", user_path(@user), class: 'post'
@@ -12,7 +12,9 @@
       .user_nav.grid-6
         = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'post'
         %a.post{href: "/posts/new", class: 'post'} 投稿する
+
       %hr{width:"30%"}/
+
     - else
       .grid-6
         = link_to "ログイン", new_user_session_path, class: 'post'
@@ -78,7 +80,9 @@
 
   .contents__pagenation
     = paginate(@posts)
+
   .timage
     = image_tag "Dipressd_man.png", size:'200x200'
+
   .description__text__main
     %p いつもお疲れ様です。

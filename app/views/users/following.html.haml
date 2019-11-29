@@ -3,6 +3,18 @@
     %hr{width: "50%"}/
     = @user.nickname
     %br
-    = image_tag(@user.image.url, class: 'icon_image')
+    = link_to user_path(@user) do
+      = image_tag(@user.image.url, class: 'icon_image')
     %hr{width: "50%"}/
-    フォロー
+    .follow-title
+      ⬇︎⬇︎⬇︎ フォロー ⬇︎⬇︎⬇︎
+    %hr{width: "50%"}/
+    - @user.followings.each do |user|
+      = user.nickname
+      %br
+      = link_to user_path(user) do
+        = image_tag(user.image.url, class: 'icon_image')
+      %hr{width: "50%"}/
+    = link_to "戻る", user_path(@user), class: 'post'
+    %hr{width: "50%"}/
+    = link_to "トップページ", :root, class: 'post'
