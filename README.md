@@ -42,6 +42,7 @@
 インフラ  
 ・Docker、docker-composeによる開発環境、テスト環境構築  
 ・仮想サーバーEC2(AWS)を使用  
+・AWS S3への画像アップロード(gem CarrierWaveを使用)  
 ・Capistranoを用いた自動デプロイ  
 
 ## 追加予定機能
