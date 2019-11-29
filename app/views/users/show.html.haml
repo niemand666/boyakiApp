@@ -6,9 +6,9 @@
     = @user.nickname
     %br
     = image_tag(@user.image.url, class: 'icon_image')
-
+    %p
     = render 'relationships/follow_button', user: @user
-
+    %p
     - @user ||= current_user
     .user-stats
       = link_to following_user_path(@user) do
