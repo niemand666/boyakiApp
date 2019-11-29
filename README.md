@@ -4,11 +4,11 @@
 ご覧になる際はURLにアクセスのうえ、下記アカウントでログインください。  
 ・URL: http://52.192.191.134/  
 ・メールアドレス: test@gmail.com  
-・パスワード: 123456  
+・パスワード: 123456 
 
-<img width="500" height="500" alt="7050a700651fa9657b9ebcecee95674c" src="https://user-images.githubusercontent.com/54017804/69846710-3e7ec800-12b8-11ea-9171-ee554f7e928f.png">
-
-<img width="500" height="500" alt="6bd7cf48da7b48a7e36ba6905eb16f76" src="https://user-images.githubusercontent.com/54017804/69845778-23f71f80-12b5-11ea-91d7-2c14531d0e1f.png">  
+|表紙|中面1|
+|---|---|
+|![]<img width="400" height="400" alt="7050a700651fa9657b9ebcecee95674c" src="https://user-images.githubusercontent.com/54017804/69846710-3e7ec800-12b8-11ea-9171-ee554f7e928f.png">|![]<img width="400" height="400" alt="6bd7cf48da7b48a7e36ba6905eb16f76" src="https://user-images.githubusercontent.com/54017804/69845778-23f71f80-12b5-11ea-91d7-2c14531d0e1f.png">|
 
 
 
