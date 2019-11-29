@@ -25,12 +25,12 @@
     %hr{width: "100%"}/
 
   .details__box_button_like
-    いいねボタン
+    まいったねボタン
     #favorite_btn
       = render partial: 'likes/like', locals: { post: @post, like: @like }
     %hr{width: "100%"}/
   .liked-user
-    いいねしたユーザー
+    まいったねしたユーザー
     %br
     - if @likes
       - @likes.each do |like|

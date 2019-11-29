@@ -26,11 +26,12 @@
 
 サーバサイド  
 ・ユーザー登録機能(gem deviseを使用)  
+・ユーザーマイページ  
 ・投稿一覧表示  
 ・記事の投稿機能  
 ・記事の編集機能  
 ・記事の削除機能  
-・記事に対する「いいね」機能  
+・記事に対する「いいね」ボタン  
 ・「いいね」カウント機能  
 ・記事に対するコメント機能  
 ・検索機能(gem ransackを使用)  
@@ -42,6 +43,18 @@
 ・Docker、docker-composeによる開発環境、テスト環境構築  
 ・仮想サーバーEC2(AWS)を使用  
 ・Capistranoを用いた自動デプロイ  
+
+## 追加予定機能
+・コメントの非同期通信化
+・フォロワー機能
+・単体テスト 随時進めていきます  
+・統合テスト 随時進めていきます  
+・CircleCIによる自動テスト  
+・CircleCIによる自動デプロイ  
+
+## 工夫した点
+・js.erbを使っていいねボタンを非同期化しました。ボタンを押すと色が代わり、いいね数が変化します。  
+・サイト全体をシンプルなデザインにして見やすさを重視しました。  
 
 # データベース設計
 
@@ -65,6 +78,7 @@
 |------|----|-------|
 |title|string|null: false|
 |content|text|null: false|
+|user_id|bigint|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -76,8 +90,8 @@
 ## likes table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|post_id|integer|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
+|post_id|bigint|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -87,9 +101,9 @@
 ## comments table
 |Column|Type|Options|
 |------|----|-------|
-|text|string|null: false|
-|user_id|integer|null: false|
-|post_id|integer|null: false|
+|text|text|null: false|
+|user_id|bigint|null: false, foreign_key: true|
+|post_id|bigint|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
