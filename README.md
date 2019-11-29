@@ -12,7 +12,7 @@
 
 |コメント部分|
 |---|
-|<img width="450" height="400" alt="421bf73df042574c42b3eb06b7819c48" src="https://user-images.githubusercontent.com/54017804/69847434-77b83780-12ba-11ea-83a0-f3782024f8da.png">|
+|<img width="400" height="400" alt="421bf73df042574c42b3eb06b7819c48" src="https://user-images.githubusercontent.com/54017804/69847434-77b83780-12ba-11ea-83a0-f3782024f8da.png">|
 
 ## 概要
 ユーザーが抱えている悩みを素直に書き出して整理することでストレスの軽減が可能になり、更に第三者のユーザーからの客観的な意見をもらえる場としてのアプリケーションを目指しています。
