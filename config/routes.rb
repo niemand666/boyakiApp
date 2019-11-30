@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
 
+  resources :notifications, only: :index
+
   get 'search', to: 'posts#search'
   post '/like/:post_id', to: 'likes#create', as: 'create'
   delete '/like/:post_id', to: 'likes#destroy', as: 'destroy'

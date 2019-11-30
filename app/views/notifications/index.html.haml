@@ -1,0 +1,26 @@
+.contents
+  .timage
+    = image_tag "Dipressd_man.png", size:'100x100'
+
+  %h2 お知らせ
+  
+  %hr{width: "70%"}/
+
+- notifications = @notifications.where.not(visitor_id: current_user.id)
+- if notifications.exists?
+  = render notifications
+  = paginate(notifications)
+- else
+  .details__userinfo
+    %hr{width:"40%"}/
+    通知はありません
+
+%hr{width: "40%"}/
+
+.contents
+  = link_to "マイページに戻る", user_path(current_user), class: 'post'
+  = link_to "トップページ", :root, class: 'post'
+  %hr{width:"40%"}/
+
+  .timage
+    = image_tag "Dipressd_man.png", size:'100x100'
