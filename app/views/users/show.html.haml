@@ -3,12 +3,19 @@
     = image_tag "Dipressd_man.png", size:'100x100'
 
   - if @user.id == current_user.id
-    %hr{width: "40%"}/
-    = link_to "お知らせ", notifications_path, class: 'post'
+    %hr{width: "45%"}/
+
+    - if unchecked_notifications.any?
+      = link_to notifications_path, class: 'notification-btn' do
+        = @notifications.count
+        件のお知らせ
+    - else
+      = link_to "お知らせ", notifications_path, class: 'post'
+      
     = link_to "新規投稿", new_post_path, class: 'post'
     = link_to "アカウント編集", edit_user_registration_path, class: 'post'
     = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'post'
-    %hr{width: "40%"}/
+    %hr{width: "45%"}/
     %h2 マイページ
 
   - else
