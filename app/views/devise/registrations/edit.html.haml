@@ -1,6 +1,17 @@
 .contents
+  .timage
+    = image_tag "Dipressd_man.png", size:'100x100'
+
+  %hr{width:"60%"}/
+  = link_to "マイページに戻る", user_path(@user), class: 'post'
+  = link_to "トップページ", root_path, class: 'post'
+  = link_to(user_registration_path(id: current_user.id), method: :delete, class: 'post', data: { confirm: '投稿とコメントも同時に削除されますが、よろしいですか？' }) do
+    退会する
+  %hr{width:"60%"}/
+
   %h2 アカウント編集
-%hr{width:"50%"}/
+
+%hr{width:"60%"}/
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = render "devise/shared/error_messages", resource: resource
   .contents
@@ -13,7 +24,7 @@
       = image_tag 'sample.png'
       = f.hidden_field :avatar_cache
     = f.file_field :image, id: "user_img"
-    %hr{width:"50%"}/
+    %hr{width:"60%"}/
 
     = f.label :ニックネーム
     = f.label :必須, class:'hissu'
@@ -21,7 +32,7 @@
     %br/
     = f.text_field :nickname, autofocus: true, maxlength: "20", class: 'input__title'
     %br/
-    %hr{width:"50%"}/
+    %hr{width:"60%"}/
 
     = f.label :メールアドレス
     = f.label :必須, class:'hissu'
@@ -30,7 +41,8 @@
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     %div
       Currently waiting confirmation for: #{resource.unconfirmed_email}
-  %hr{width:"50%"}/
+  %hr{width:"60%"}/
+  
   .contents
     パスワード変更（変更しない場合は空欄のまま更新してください）
     %br
@@ -43,25 +55,23 @@
         ＊
         = @minimum_password_length
         文字以上
+
   .contents
     = f.label :新パスワード（確認用）
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input__title'
-    %hr{width:"50%"}/
+    %hr{width:"60%"}/
+
   .contents
     = f.label :現在のパスワード
     = f.label :必須, class:'hissu'
     %br/
     = f.password_field :current_password, autocomplete: "current-password", class: 'input__title'
-  %hr{width:"50%"}/
+  %hr{width:"60%"}/
   .contents
+
     = f.submit "更新する", class: 'post'
-    %hr{width:"50%"}/
-    = link_to(user_registration_path(id: current_user.id), method: :delete, class: 'post', data: { confirm: '投稿とコメントも同時に削除されますが、よろしいですか？' }) do
-      退会する
-    %hr{width:"50%"}/
+    %hr{width:"20%"}/
     .contents__logo
-      = image_tag "Dipressd_man.png", size:'200x200'
-      %hr{width:"50%"}/
-    = link_to "マイページに戻る", user_path(@user), class: 'post'
-    = link_to "トップページ", root_path, class: 'post'
+    
+      = image_tag "Dipressd_man.png", size:'100x100'

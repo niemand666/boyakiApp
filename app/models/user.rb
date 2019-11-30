@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
 
-  # フォローしようとしている other_user が自分自身ではないかを検証する。
+  # フォローしようとしている other_user が自分自身ではないかを検証するメソッド
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)

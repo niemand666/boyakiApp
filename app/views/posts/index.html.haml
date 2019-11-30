@@ -1,6 +1,5 @@
 .header
   .header__bar.row
-
     - if user_signed_in?
       .user_info
         = link_to "マイページ", user_path(@user), class: 'post'

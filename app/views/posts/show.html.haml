@@ -1,3 +1,9 @@
+.contents
+  .timage
+    = image_tag "Dipressd_man.png", size:'100x100'
+  %h2 詳細ページ
+  %hr{width: "60%"}/
+
 .details
   %p
   .details__username
@@ -18,7 +24,6 @@
   - if current_user.id == @post.user_id
     = link_to '編集', edit_post_path(@post), class: 'post'
     = link_to '削除', post_path(@post), method: :delete, class: 'post', data: { confirm: '削除しますか？' }
-  = image_tag "Dipressd_man.png", size:'200x200'
   .details__posttimezone
     投稿日時
     = @post.created_at.strftime("%Y/%m/%d %H:%M")
@@ -53,7 +58,8 @@
     - if @comments
       - @comments.each do |comment|
         .details__username
-          = image_tag(comment.user.image.url, class: 'liked-users')
+          = link_to user_path(comment.user) do
+            = image_tag(comment.user.image.url, class: 'liked-users')
           = comment.user.nickname
         .details__timezone
           = comment.created_at.strftime("%Y/%m/%d %H:%M")
@@ -64,3 +70,8 @@
 
 .details
   = link_to 'トップページ', root_path, class: 'post'
+
+.contents
+  %hr{width: "60%"}/
+  .timage
+    = image_tag "Dipressd_man.png", size:'100x100'
