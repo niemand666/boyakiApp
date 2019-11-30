@@ -29,7 +29,6 @@
     = @post.created_at.strftime("%Y/%m/%d %H:%M")
     %hr{width: "100%"}/
 
-
   .details__box_button_like
     いいねボタン
     #favorite_btn
@@ -51,6 +50,7 @@
     .details__comment-btn
       = f.submit 'コメントする', class: 'post'
       %p
+      
   .details__comments-list
     コメント
     = @comments_count
