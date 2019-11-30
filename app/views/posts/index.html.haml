@@ -6,7 +6,7 @@
         = link_to "お知らせ", notifications_path, class: 'post'
         = link_to "新規投稿", new_post_path, class: 'post'
         = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'post'
-        %hr{width:"70%"}/
+        %hr{width:"40%"}/
         %p
         ユーザー
         %br
@@ -19,7 +19,7 @@
         = link_to "ログイン", new_user_session_path, class: 'post'
         = link_to "新規登録", new_user_registration_path, class: 'post'
 
-%hr{width:"70%"}/
+%hr{width:"40%"}/
 
 .contents
   %p.main-title
@@ -34,11 +34,11 @@
         %br
         %p ※閲覧や投稿にはユーザー登録が必要です。
 
-  %hr{width: "50%"}/
+  %hr{width: "40%"}/
 
   = render 'search_form'
 
-  %hr{width: "50%"}/
+  %hr{width: "40%"}/
 
   %tr
     - if @posts.any?
@@ -71,11 +71,11 @@
           %br
           投稿日時
           = post.created_at.strftime("%Y/%m/%d")
-        %hr{width: "50%"}/
+        %hr{width: "40%"}/
     - else
       .description__text__main
         投稿はありません m(_ _)m
-      %hr{width: "50%"}/
+      %hr{width: "40%"}/
 
   .contents__pagenation
     = paginate(@posts)

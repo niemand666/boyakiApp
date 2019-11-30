@@ -3,8 +3,8 @@
     = image_tag "Dipressd_man.png", size:'100x100'
 
   %h2 お知らせ
-  
-  %hr{width: "70%"}/
+
+  %hr{width: "40%"}/
 
 - notifications = @notifications.where.not(visitor_id: current_user.id)
 - if notifications.exists?
