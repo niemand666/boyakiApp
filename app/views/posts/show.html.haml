@@ -2,17 +2,21 @@
   .timage
     = image_tag "Dipressd_man.png", size:'100x100'
   %h2 詳細ページ
-  %hr{width: "40%"}/
+  - if current_user.id == @post.user_id
+    %hr{width: "20%"}/
+    = link_to '編集する', edit_post_path(@post), class: 'post'
+    = link_to '削除する', post_path(@post), method: :delete, class: 'post', data: { confirm: '削除しますか？' }
+  %hr{width: "20%"}/
 
 .details
-  %p
   .details__username
     = @user.nickname
     さんの投稿
     %br
     = link_to user_path(@post.user) do
       = image_tag(@post.user.image.url, class: 'icon_image')
-      
+    %hr{width: "100%"}/
+
   .details__title
     = @post.title
   %p
@@ -20,14 +24,11 @@
     = simple_format(@post.content)
 
 .details
-  = link_to 'トップページ', root_path, class: 'post'
-  - if current_user.id == @post.user_id
-    = link_to '編集', edit_post_path(@post), class: 'post'
-    = link_to '削除', post_path(@post), method: :delete, class: 'post', data: { confirm: '削除しますか？' }
   .details__posttimezone
     投稿日時
     = @post.created_at.strftime("%Y/%m/%d %H:%M")
     %hr{width: "100%"}/
+
 
   .details__box_button_like
     いいねボタン
@@ -41,7 +42,7 @@
       - @likes.each do |like|
         = link_to user_path(like.user) do
           = image_tag(like.user.image.url, class: 'liked-users')
-%hr{width: "40%"}/
+  %hr{width: "100%"}/
 
 .details
   コメントする
@@ -61,11 +62,10 @@
           = link_to user_path(comment.user) do
             = image_tag(comment.user.image.url, class: 'liked-users')
           = comment.user.nickname
-        .details__timezone
-          = comment.created_at.strftime("%Y/%m/%d %H:%M")
-          %br
         .details__comment
           = simple_format(comment.text)
+        .details__timezone
+          = comment.created_at.strftime("%Y/%m/%d %H:%M")
         %hr{width: "100%"}/
 
 .details

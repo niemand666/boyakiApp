@@ -19,10 +19,10 @@
     %h2 マイページ
 
   - else
-    %hr{width: "70%"}/
-    = link_to "マイページ", user_path(@user), class: 'post'
+    %hr{width: "20%"}/
+    = link_to "マイページ", user_path(current_user), class: 'post'
     = link_to "新規投稿", new_post_path, class: 'post'
-    %hr{width: "70%"}/
+    %hr{width: "20%"}/
     
 .details
   .details__userinfo
