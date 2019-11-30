@@ -4,6 +4,7 @@ class LikesController < ApplicationController
   def create
     @like = current_user.likes.create(post_id: params[:post_id])
     render 'like-btn.js.erb'
+    @post.create_notification_like!(current_user)
   end
 
   def destroy
