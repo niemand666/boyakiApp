@@ -3,7 +3,7 @@
 .details
   .form-inline
     %span
-      = link_to user_path(visitor) do
+      = link_to user_path(visitor), class: 'user-status' do
         = image_tag(visitor.image.url, class: 'icon_image')
         %strong
           = visitor.nickname
@@ -15,19 +15,19 @@
         %p
 
       - when 'like' then
-        = link_to 'あなたの投稿', notification.post, style: "font-weight: bold;"
+        = link_to 'あなたの投稿', notification.post, style: "font-weight: bold;", class: 'user-status'
         = "にいいねしました。"
         %p
 
       - when 'comment' then
         - if notification.post.user_id == visited.id
-          = link_to "あなたの投稿", notification.post, style: "font-weight: bold;"
+          = link_to "あなたの投稿", notification.post, style: "font-weight: bold;", class: 'user-status'
         - else
           %span
-            = link_to user_path(notification.post.user) do
+            = link_to user_path(notification.post.user), class: 'user-status' do
               = image_tag(notification.post.user.image.url, class: 'icon_image')
             %strong
-              = link_to post_path(notification.post) do
+              = link_to post_path(notification.post), class: 'user-status' do
                 = notification.post.user.nickname + 'さんの投稿'
         = "にコメントしました。"
         %p.text-muted.mb-0

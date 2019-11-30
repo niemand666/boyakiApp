@@ -1,23 +1,23 @@
 .details
   %p
-    .details__username
-      = @user.nickname
-      さんの投稿
-      %br
-      = link_to user_path(@post.user) do
-        = image_tag(@post.user.image.url, class: 'icon_image')
-    .details__title
-      = @post.title
+  .details__username
+    = @user.nickname
+    さんの投稿
+    %br
+    = link_to user_path(@post.user) do
+      = image_tag(@post.user.image.url, class: 'icon_image')
+      
+  .details__title
+    = @post.title
   %p
-    .details__text
-      = simple_format(@post.content)
+  .details__text
+    = simple_format(@post.content)
 
 .details
   = link_to 'トップページ', root_path, class: 'post'
-  - if user_signed_in?
-    - if current_user.id == @post.user_id
-      = link_to '編集', edit_post_path(@post), class: 'post'
-      = link_to '削除', post_path(@post), method: :delete, class: 'post', data: { confirm: '削除しますか？' }
+  - if current_user.id == @post.user_id
+    = link_to '編集', edit_post_path(@post), class: 'post'
+    = link_to '削除', post_path(@post), method: :delete, class: 'post', data: { confirm: '削除しますか？' }
   = image_tag "Dipressd_man.png", size:'200x200'
   .details__posttimezone
     投稿日時

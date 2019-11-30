@@ -1,7 +1,17 @@
+.contents
+  %h2 お知らせ
+
 - notifications = @notifications.where.not(visitor_id: current_user.id)
 - if notifications.exists?
   = render notifications
   = paginate(notifications)
 - else
-  %p
+  .details__userinfo
+    %hr{width:"50%"}/
     通知はありません
+
+%p
+.contents
+  = link_to "マイページに戻る", user_path(current_user), class: 'post'
+  = link_to "トップページ", :root, class: 'post'
+  %hr{width:"50%"}/
