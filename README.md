@@ -8,7 +8,7 @@
 |---|---|
 |<img width="450" height="400" alt="b0d97412a76a0496490ab48ce77d4062" src="https://user-images.githubusercontent.com/54017804/69917715-57e86580-14ac-11ea-848c-927efdffaa7d.png">|<img width="450" height="400" alt="74ab39a34a15301ae0f649c4155b737b" src="https://user-images.githubusercontent.com/54017804/69917730-836b5000-14ac-11ea-81cc-eaec746934b7.png">|
 
-|通知画面|フォロワー画面|
+|お知らせページ|フォロワー一覧ページ|
 |---|---|
 |<img width="450" height="400" alt="ac8a32cd2c0aa8c9faa25f9da6d160a1" src="https://user-images.githubusercontent.com/54017804/69917777-1efcc080-14ad-11ea-8f36-b5f145abde3c.png">|<img width="450" height="400" alt="b21fb9c2bb74d8bd57e6b139fc15d94b" src="https://user-images.githubusercontent.com/54017804/69917791-418ed980-14ad-11ea-8c3a-b49fe12b81c4.png">|
 
