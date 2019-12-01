@@ -25,6 +25,9 @@
 Ruby 2.5.1  
 Rails 5.2.3  
 MySQL 5.6  
+AWS  
+・Amazon EC2  
+・Amazon S3  
 
 
 ## 機能一覧及び使用技術
