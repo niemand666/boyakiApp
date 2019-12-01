@@ -1,7 +1,6 @@
 $(document).on('turbolinks:load', function(){
   function buildHTML(comment){
-    var html = `
-                <div class="details__username">
+    var html = `<div class="details__username">
                   <a href=/users/${comment.user_id}>
                     <img class="liked-users" src=${comment.user_image}>
                   </a>
@@ -20,7 +19,7 @@ $(document).on('turbolinks:load', function(){
   $('#new_comment').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var url = $(this).attr('action');
     $.ajax({
       url: url,
       type: "POST",
@@ -32,8 +31,10 @@ $(document).on('turbolinks:load', function(){
     //成功時の処理
     .done(function(data){
       var html = buildHTML(data);
-      $('.details__comments-list').prepend(html);
+      $('.details__comments-list').append(html);
+      $('#new_comment')[0].reset();
       $('.comment-area').val('')
+      $('.post').prop('disabled', false);
     })
     //エラー時の処理
     .fail(function(){
