@@ -50,10 +50,6 @@ class PostsController < ApplicationController
     @results = @search.result.includes(:user).order("created_at DESC").page(params[:page]).per(5)
   end
 
-  def set_search
-    @search = Post.ransack(params[:q])
-  end
-
   private
   def post_params
     params.require(:post).permit(:title,:content).merge(user_id: current_user.id)
@@ -61,5 +57,9 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def set_search
+    @search = Post.ransack(params[:q])
   end
 end
