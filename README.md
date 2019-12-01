@@ -1,20 +1,25 @@
-# README
-
-## サイト
+## 自作アプリ「まいったね」
 ご覧になる際はURLにアクセスのうえ、下記アカウントでログインください。  
 ・URL: http://52.192.191.134/  
 ・メールアドレス: test@gmail.com  
 ・パスワード: 123456 
 
-|投稿一覧ページ|投稿詳細ページ|
+|記事詳細ページ|ユーザーマイページ|
 |---|---|
-|<img width="450" height="400" alt="7050a700651fa9657b9ebcecee95674c" src="https://user-images.githubusercontent.com/54017804/69846710-3e7ec800-12b8-11ea-9171-ee554f7e928f.png">|<img width="450" height="400" alt="6bd7cf48da7b48a7e36ba6905eb16f76" src="https://user-images.githubusercontent.com/54017804/69845778-23f71f80-12b5-11ea-91d7-2c14531d0e1f.png">|
+|<img width="450" height="400" alt="b0d97412a76a0496490ab48ce77d4062" src="https://user-images.githubusercontent.com/54017804/69917715-57e86580-14ac-11ea-848c-927efdffaa7d.png">|<img width="450" height="400" alt="74ab39a34a15301ae0f649c4155b737b" src="https://user-images.githubusercontent.com/54017804/69917730-836b5000-14ac-11ea-81cc-eaec746934b7.png">|
+
+|通知画面|フォロワー画面|
+|---|---|
+|<img width="450" height="400" alt="ac8a32cd2c0aa8c9faa25f9da6d160a1" src="https://user-images.githubusercontent.com/54017804/69917777-1efcc080-14ad-11ea-8f36-b5f145abde3c.png">|<img width="695" alt="b21fb9c2bb74d8bd57e6b139fc15d94b" src="https://user-images.githubusercontent.com/54017804/69917791-418ed980-14ad-11ea-8c3a-b49fe12b81c4.png">|
+
 
 ## 概要
 ユーザーが抱えている悩みを素直に書き出して整理することでストレスの軽減が可能になり、更に第三者のユーザーからの客観的な意見をもらえる場としてのアプリケーションを目指しています。
 
+
 ## 制作背景
 私自身が過去に悩みを抱えて苦しんでいた時期に、ノートに悩みを箇条書きで書き出してみたら気分が落ち着いた、という経験があったため、今回のアプリケーションを制作しました。
+
 
 ## 機能一覧及び使用技術
 フロントエンド  
@@ -24,15 +29,14 @@
 ・ユーザー登録機能(gem deviseを使用)  
 ・ユーザーマイページ  
 ・フォロワー機能  
-・投稿一覧表示  
-・記事の投稿機能  
-・記事の編集機能  
-・記事の削除機能  
-・いいねボタン  
+・記事の投稿  
+・記事の編集  
+・記事の削除  
+・いいねボタン(非同期)  
 ・コメント機能  
-・コメント機能の非同期通信化  
+・コメント機能の非同期通信  
 ・新規フォローワー、新規コメント、新規いいねの通知機能  
-・検索機能(gem ransackを使用)  
+・記事検索機能(gem ransackを使用)  
 ・ページネーション(gem kaminariを使用)  
 ・単体テスト(RSpec)  
 ・統合テスト(RSpec)  
@@ -43,15 +47,19 @@
 ・AWS S3への画像アップロード(gem CarrierWaveを使用)  
 ・Capistranoを用いた自動デプロイ  
 
+
 ## 追加予定機能
 ・単体テスト 随時進めていきます  
 ・統合テスト 随時進めていきます  
 ・CircleCIによる自動テスト  
 ・CircleCIによる自動デプロイ  
 
+
 ## 工夫した点
+・自分以外のユーザーが自分の投稿にいいねやコメントをすると、マイページ内のボタンを変化させてユーザーに知らせます。
 ・js.erbを使っていいねボタンを非同期化しました。ボタンを押すと色が代わり、いいね数が変化します。  
 ・サイト全体をシンプルなデザインにして見やすさを重視しました。  
+
 
 # データベース設計
 

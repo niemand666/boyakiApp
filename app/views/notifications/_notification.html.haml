@@ -34,7 +34,7 @@
         %p.text-muted.mb-0
           = Comment.find_by(id: notification.comment_id).text
 
-  .small.text-muted.text-right
+  .details__timezone
     = time_ago_in_words(notification.created_at).upcase
     ago
   %hr
