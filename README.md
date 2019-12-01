@@ -56,7 +56,7 @@
 
 
 ## 工夫した点
-・自分以外のユーザーが自分の投稿にいいねやコメントをすると、マイページ内のボタンを変化させてユーザーに知らせます。
+・自分以外のユーザーが自分の投稿にいいねやコメントをすると、マイページ内のボタンを変化させてユーザーに知らせます。  
 ・js.erbを使っていいねボタンを非同期化しました。ボタンを押すと色が代わり、いいね数が変化します。  
 ・サイト全体をシンプルなデザインにして見やすさを重視しました。  
 
@@ -137,8 +137,8 @@
 |------|----|-------|
 |visitor_id|integer|null: false|
 |visited_id|integer|null: false|
-|post_id|integer|---|
-|comment_id|integer|---|
+|post_id|integer||
+|comment_id|integer||
 |action|string|default: '', null: false|
 |checked|boolean|default: false, null: false|
 
