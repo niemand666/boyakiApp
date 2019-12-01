@@ -30,6 +30,8 @@
 ・記事の削除機能  
 ・いいねボタン  
 ・コメント機能  
+・コメント機能の非同期通信化  
+・新規フォローワー、新規コメント、新規いいねの通知機能  
 ・検索機能(gem ransackを使用)  
 ・ページネーション(gem kaminariを使用)  
 ・単体テスト(RSpec)  
@@ -42,7 +44,6 @@
 ・Capistranoを用いた自動デプロイ  
 
 ## 追加予定機能
-・コメントの非同期通信化  
 ・単体テスト 随時進めていきます  
 ・統合テスト 随時進めていきます  
 ・CircleCIによる自動テスト  
@@ -67,6 +68,23 @@
 - has_many :comments, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :liked_posts, through: :likes, source: :post
+- has_many :relationships
+- has_many :followings, through: :relationships, source: :follow
+- has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+- has_many :followers, through: :reverse_of_relationships, source: :user
+- has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+- has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
+
+## relationships table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|bigint|foreign_key: true|
+|follow_id|bigint|foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :follow, class_name: 'User'
 
 
 ## posts table
@@ -74,20 +92,21 @@
 |------|----|-------|
 |title|string|null: false|
 |content|text|null: false|
-|user_id|bigint|null: false, foreign_key: true|
+|user_id|bigint|foreign_key: true|
 
 ### Association
 - belongs_to :user
 - has_many :comments
 - has_many :likes
 - has_many :liked_users, through: :likes, source: :user
+- has_many :notifications, dependent: :destroy
 
 
 ## likes table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|bigint|null: false, foreign_key: true|
-|post_id|bigint|null: false, foreign_key: true|
+|user_id|bigint|foreign_key: true|
+|post_id|bigint|foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -98,9 +117,25 @@
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
-|user_id|bigint|null: false, foreign_key: true|
-|post_id|bigint|null: false, foreign_key: true|
+|user_id|bigint|foreign_key: true|
+|post_id|bigint|foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :post
+
+## notifications table
+|Column|Type|Options|
+|------|----|-------|
+|visitor_id|integer|null: false|
+|visited_id|integer|null: false|
+|post_id|integer|---|
+|comment_id|integer|---|
+|action|string|default: '', null: false|
+|checked|boolean|default: false, null: false|
+
+### Association
+- belongs_to :post, optional: true
+- belongs_to :comment, optional: true
+- belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
+- belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
