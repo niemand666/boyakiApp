@@ -10,7 +10,7 @@
 
 |通知画面|フォロワー画面|
 |---|---|
-|<img width="450" height="400" alt="ac8a32cd2c0aa8c9faa25f9da6d160a1" src="https://user-images.githubusercontent.com/54017804/69917777-1efcc080-14ad-11ea-8f36-b5f145abde3c.png">|<img width="695" alt="b21fb9c2bb74d8bd57e6b139fc15d94b" src="https://user-images.githubusercontent.com/54017804/69917791-418ed980-14ad-11ea-8c3a-b49fe12b81c4.png">|
+|<img width="450" height="400" alt="ac8a32cd2c0aa8c9faa25f9da6d160a1" src="https://user-images.githubusercontent.com/54017804/69917777-1efcc080-14ad-11ea-8f36-b5f145abde3c.png">|<img width="450" height="400" alt="b21fb9c2bb74d8bd57e6b139fc15d94b" src="https://user-images.githubusercontent.com/54017804/69917791-418ed980-14ad-11ea-8c3a-b49fe12b81c4.png">|
 
 
 ## 概要
