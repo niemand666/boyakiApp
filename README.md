@@ -1,9 +1,10 @@
 # 自作アプリ「まいったね」
-ご覧になる際はURLにアクセスのうえ、下記アカウントでログインください。  
+ご覧になる際はURLにアクセスのうえ、下記アカウントでログインしてください。  
 ・URL: http://52.192.191.134/  
 ・メールアドレス: test@gmail.com  
 ・パスワード: 123456 
 
+## イメージ
 |記事詳細ページ|ユーザーマイページ|
 |---|---|
 |<img width="450" height="400" alt="b0d97412a76a0496490ab48ce77d4062" src="https://user-images.githubusercontent.com/54017804/69917715-57e86580-14ac-11ea-848c-927efdffaa7d.png">|<img width="450" height="400" alt="74ab39a34a15301ae0f649c4155b737b" src="https://user-images.githubusercontent.com/54017804/69917730-836b5000-14ac-11ea-81cc-eaec746934b7.png">|
