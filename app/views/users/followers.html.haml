@@ -1,3 +1,7 @@
+.contents
+  .timage
+    = image_tag "Dipressd_man.png", size:'100x100'
+
 .details
   .details__userinfo
     %hr{width: "50%"}/
@@ -6,6 +10,7 @@
     = link_to user_path(@user) do
       = image_tag(@user.image.url, class: 'icon_image')
     %hr{width: "50%"}/
+    
     .follow-title
       ⬆︎⬆︎⬆︎ フォロワー ⬆︎⬆︎⬆︎
     %hr{width: "50%"}/
@@ -22,6 +27,9 @@
       フォロワーはいません。
 
 .contents
-  %hr{width: "40%"}/
+  %hr{width: "20%"}/
   = link_to "戻る", user_path(@user), class: 'post'
   = link_to "トップページ", :root, class: 'post'
+  %hr{width: "20%"}/
+  .timage
+    = image_tag "Dipressd_man.png", size:'100x100'

@@ -1,8 +1,13 @@
 .contents
+  .timage
+    = image_tag "Dipressd_man.png", size:'100x100'
+
   = render 'search_form'
-  %hr{width: "50%"}/
+
+  %hr{width: "40%"}/
   検索結果
-  %hr{width: "50%"}/
+  %hr{width: "40%"}/
+
   - if @results.any?
     - @results.each do |result|
 
@@ -23,6 +28,7 @@
         = result.title
         - if user_signed_in?
           = link_to '読む', result, class: 'btn__details'
+
       .contents__likes
         【いいね:
         = result.liked_users.count
@@ -33,15 +39,19 @@
         %br
         投稿日時
         = result.created_at.strftime("%Y/%m/%d")
-      %hr{width: "50%"}/
+      %hr{width: "40%"}/
+
   - else
     .description__text__main
       該当する記事はありません m(_ _)m
-    %hr{width: "50%"}/
+    %hr{width: "40%"}/
 
   .contents__pagenation
     = paginate(@results)
-  .timage
-    = image_tag "Dipressd_man.png", size:'200x200'
-    %p
+    
+  %hr{width: "20%"}/
   = link_to "トップページ", :root, class: 'post'
+  %hr{width: "20%"}/
+  
+  .timage
+    = image_tag "Dipressd_man.png", size:'100x100'
