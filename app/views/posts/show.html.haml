@@ -45,17 +45,18 @@
 
 .details
   コメントする
-  = form_with(model:[ @post, @post.comments.build ], local: true) do |f|
+  = form_with(model:[ @post, @post.comments.build ], id: 'new_comment', local: true) do |f|
     = f.text_area :text, class:'comment-area'
     .details__comment-btn
       = f.submit 'コメントする', class: 'post'
-      %p
-      
-  .details__comments-list
+  %p
+
+  .details__comments
     コメント
     = @comments_count
     件
     %hr{width: "100%"}/
+    .details__comments-list
     - if @comments
       - @comments.each do |comment|
         .details__username
