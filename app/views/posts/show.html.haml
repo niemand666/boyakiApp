@@ -28,9 +28,7 @@
     投稿日時
     = @post.created_at.strftime("%Y/%m/%d %H:%M")
     %br
-    閲覧数
-    //【#{@post.impressionist_count}】
-    【 #{number_with_delimiter(@page_views)} 】
+    閲覧数【 #{number_with_delimiter(@page_views)} 】
     %hr{width: "100%"}/
 
   .details__box_button_like
