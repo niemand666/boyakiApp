@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    @posts = Post.where(user_id: @user.id).page(params[:page]).per(5).order("created_at DESC")
+    @posts = Post.where(user_id: @user.id).page(params[:page]).per(10).order("created_at DESC")
   end
 
   def following
@@ -13,6 +13,11 @@ class UsersController < ApplicationController
   def followers
     @users = @user.followers
     @followers_count = Relationship.where(follow_id: @user.id).count
+  end
+
+  def timeline
+    @users = @user.followings
+    @posts = Post.where(user_id: @users).page(params[:page]).per(10).order("created_at DESC")
   end
 
   private

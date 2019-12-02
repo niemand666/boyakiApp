@@ -3,7 +3,7 @@
     = image_tag "Dipressd_man.png", size:'100x100'
 
   %hr{width:"40%"}/
-  = link_to "マイページに戻る", user_path(@user), class: 'post'
+  = link_to "マイページ", user_path(@user), class: 'post'
   = link_to "トップページ", root_path, class: 'post'
   = link_to(user_registration_path(id: current_user.id), method: :delete, class: 'post', data: { confirm: '投稿とコメントも同時に削除されますが、よろしいですか？' }) do
     退会する

@@ -6,8 +6,7 @@
 
         - if unchecked_notifications.any?
           = link_to notifications_path, class: 'notification-btn' do
-            = @notifications.count
-            件のお知らせ
+            #{@notifications.count}件のお知らせ
         - else
           = link_to "お知らせ", notifications_path, class: 'post'
           
