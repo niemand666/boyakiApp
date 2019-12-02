@@ -1,12 +1,13 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 header{
   height: 60px;
 }
 
 body{
-  background-color: whitesmoke;
+  background: linear-gradient(to top, rgba(196, 229, 233, 0.7), whitesmoke, rgba(196, 229, 233, 0.7) 100%);
 }
 
 .field {
