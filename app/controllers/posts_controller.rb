@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_search, only: :index
+  impressionist actions: [:show]
 
   def index
     @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(5)
@@ -27,6 +28,8 @@ class PostsController < ApplicationController
     @comments_count = Comment.where(post_id: @post.id).count
     @like = Like.new
     @likes = @post.likes.includes(:user)
+    impressionist(@post, nil, unique: [:session_hash])
+    @page_views = @post.impressionist_count
   end
 
   def edit
@@ -55,7 +58,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title,:content).merge(user_id: current_user.id)
   end
 
-  def find_post
+  def set_post
     @post = Post.find(params[:id])
   end
 
