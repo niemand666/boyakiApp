@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
+  is_impressionable
 
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索する。

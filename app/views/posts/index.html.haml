@@ -69,12 +69,8 @@
           - if user_signed_in?
             = link_to '読む', post, class: 'btn__details'
         .contents__likes
-          【いいね:
-          = post.liked_users.count
-          件】
-          【コメント:
-          = post.comments.count
-          件】
+          【いいね: #{post.liked_users.count} 件】
+          【コメント: #{post.comments.count} 件】
           %br
           投稿日時
           = post.created_at.strftime("%Y/%m/%d")

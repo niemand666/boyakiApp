@@ -18,6 +18,11 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
+  mount_uploader :image, ImageUploader
+
+  validates :nickname, presence: true, length: { maximum: 20 }
+  validates :image, presence: true
+
 
   # フォローしようとしている other_user が自分自身ではないかを検証するメソッド
   def follow(other_user)
@@ -50,10 +55,4 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
-
-  mount_uploader :image, ImageUploader
-
-  validates :nickname, presence: true, length: { maximum: 20 }
-  validates :image, presence: true
 end

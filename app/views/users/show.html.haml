@@ -42,11 +42,9 @@
       = link_to followers_user_path(@user), class: 'user-status' do
         = @user.followers.count
         フォロワー
-    %hr{width: "50%"}/
 
-    投稿
-    = @user.posts.count
-    件
+    %hr{width: "50%"}/
+    投稿 #{@user.posts.count} 件
     %hr{width: "100%"}/
 
   - @posts.each do |post|
@@ -57,12 +55,8 @@
       %br
       %p
     .contents__likes
-      【いいね:
-      = post.liked_users.count
-      件】
-      【コメント:
-      = post.comments.count
-      件】
+      【 いいね：#{post.liked_users.count} 】
+      【 コメント：#{post.comments.count} 】
       %hr{width: "100%"}/
       
   .contents__pagenation
