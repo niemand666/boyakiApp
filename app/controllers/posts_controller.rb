@@ -10,12 +10,16 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @picture = @post.pictures.build
   end
 
   def create
     @post = Post.new(post_params)
     @post.save
     if @post.save
+      params[:pictures]['picture'].reverse_each do |i|
+        @picture = @post.pictures.create!(picture: i)
+      end
       redirect_to @post
     else
       render :new, status: :unprocessable_entity
@@ -55,7 +59,11 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title,:content).merge(user_id: current_user.id)
+    params.require(:post).permit(
+      :title,
+      :content,
+      {pictures_attributes: [:picture, :_destroy, :id]}
+    ).merge(user_id: current_user.id)
   end
 
   def set_post
