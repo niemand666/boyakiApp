@@ -34,12 +34,14 @@ AWS
 ## 機能一覧及び使用技術
 フロントエンド  
 ・Haml/Sassによるマークアップ  
+・jQueryを使用した画像選択時のプレビュー表示  
 
 サーバサイド  
 ・ユーザー登録機能(gem deviseを使用)  
 ・ユーザーマイページ  
 ・フォロワー機能  
 ・記事の投稿  
+・画像の複数枚投稿  
 ・記事の編集  
 ・記事の削除  
 ・記事閲覧数の表示  
@@ -120,6 +122,17 @@ AWS
 - has_many :likes, dependent: :destroy
 - has_many :liked_users, through: :likes, source: :user
 - has_many :notifications, dependent: :destroy
+- has_many :pictures, dependent: :destroy
+
+
+## pictures table
+|Column|Type|Options|
+|------|----|-------|
+|picture|string|null: false|
+|post_id|bigint|foreign_key: true|
+
+### Association
+- belongs_to :post
 
 
 ## likes table
