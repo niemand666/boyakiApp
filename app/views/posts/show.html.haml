@@ -31,7 +31,7 @@
         = link_to picture.picture.url do
           = image_tag(picture.picture.url, size:'110x110')
 
-    %hr{width: "100%"}/
+      %hr{width: "100%"}/
 
     投稿日時
     = @post.created_at.strftime("%Y/%m/%d %H:%M")
