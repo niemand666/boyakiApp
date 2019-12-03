@@ -118,17 +118,17 @@ body{
   }
 }
 
-.input__title {
+.input-title {
   font-size: 30px;
   width: 500px;
   background-color: #fff;
-  border: 1px dashed #ccc;
+  border: 1px dashed cornflowerblue;
 }
 
-.input__text {
+.input-text {
   font-size: 20px;
   background-color: #fff;
-  border: 1px dashed #ccc;
+  border: 1px dashed cornflowerblue;
 }
 
 .input__search {
@@ -192,7 +192,7 @@ textarea {
   height: 160px;
   width: 610px;
   background: #fff;
-  border: 1px dashed #ccc;
+  border: 1px dashed cornflowerblue;
 }
 
 .dropzone-area {
@@ -206,15 +206,15 @@ textarea {
   width: 600px;
 }
 
-#exhibit-images-preview {
+#new-post-images-preview {
   display: flex;
 }
 
-.sell-uploads-drop {
+.picture-uploads-drop {
   padding: 5px;
 }
 
-.sell_upload__area {
+.pictures-uploads-area {
   display: flex;
   height: 160px;
 }
@@ -223,33 +223,22 @@ textarea {
   padding: 5px;
 }
 
-.box{
-  width: 700px;
+.btn_wrapper {
   margin: 0 auto;
-  background: #fff;
-  &__form-list{
-    height: auto;
-    overflow: hidden;
-    width: 700px;
-    &__upload-box{
-      padding: 40px 40px 40px 40px;
-      height: auto;
-      overflow: hidden;
-    }
-  }
 }
 
-.xxxxxbtn {
+.picture-btn {
   display: inline;
 }
 
-.xxxxxbtn.delete{
-  float: right;
+.picture-btn.delete{
+  margin-right: 10px;
   margin-right: 10px;
   color: deepskyblue;
 }
 
-.xxxxxbtn.edit{
+.picture-btn.edit{
+  margin-right: 10px;
   margin-left: 10px;
   color: deepskyblue;
 }

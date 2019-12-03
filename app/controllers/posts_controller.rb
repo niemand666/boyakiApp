@@ -17,8 +17,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.save
     if @post.save
-      params[:pictures]['picture'].reverse_each do |i|
-        @picture = @post.pictures.create!(picture: i)
+      unless params[:pictures].nil?
+        params[:pictures]['picture'].reverse_each do |i|
+          @picture = @post.pictures.create!(picture: i)
+        end
       end
       redirect_to @post
     else
