@@ -24,14 +24,14 @@
       = f.label :必須, class:'hissu'
       %em (最大20文字)
       %br/
-      = f.text_field :nickname, autofocus: true, maxlength: "20", class: 'input__title'
+      = f.text_field :nickname, autofocus: true, maxlength: "20", class: 'input-title'
       %hr{width:"50%"}/
 
     .field
       = f.label :メールアドレス
       = f.label :必須, class:'hissu'
       %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input__title'
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-title'
       %hr{width:"50%"}/
 
     .field
@@ -41,14 +41,14 @@
         %em
           (#{@minimum_password_length} 文字以上)
       %br/
-      = f.password_field :password, autocomplete: "new-password", class: 'input__title'
+      = f.password_field :password, autocomplete: "new-password", class: 'input-title'
       %hr{width:"50%"}/
 
     .field
       = f.label :パスワード（確認用）
       = f.label :必須, class:'hissu'
       %br/
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input__title'
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input-title'
       %br/
       %hr{width:"50%"}/
 
