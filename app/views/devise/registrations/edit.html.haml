@@ -30,14 +30,14 @@
     = f.label :必須, class:'hissu'
     %em (最大20文字)
     %br/
-    = f.text_field :nickname, autofocus: true, maxlength: "20", class: 'input__title'
+    = f.text_field :nickname, autofocus: true, maxlength: "20", class: 'input-title'
     %br/
     %hr{width:"40%"}/
 
     = f.label :メールアドレス
     = f.label :必須, class:'hissu'
     %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input__title'
+    = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-title'
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     %div
       Currently waiting confirmation for: #{resource.unconfirmed_email}
@@ -48,7 +48,7 @@
     %br
     = f.label :新パスワード
     %br/
-    = f.password_field :password, autocomplete: "new-password", class: 'input__title'
+    = f.password_field :password, autocomplete: "new-password", class: 'input-title'
     - if @minimum_password_length
       %br/
       %em
@@ -59,14 +59,14 @@
   .contents
     = f.label :新パスワード（確認用）
     %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input__title'
+    = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input-title'
     %hr{width:"40%"}/
 
   .contents
     = f.label :現在のパスワード
     = f.label :必須, class:'hissu'
     %br/
-    = f.password_field :current_password, autocomplete: "current-password", class: 'input__title'
+    = f.password_field :current_password, autocomplete: "current-password", class: 'input-title'
   %hr{width:"40%"}/
   .contents
 
