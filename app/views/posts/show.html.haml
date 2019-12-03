@@ -25,7 +25,7 @@
 
     %hr{width: "100%"}/
 
-  .details__picture#main
+  .details__picture
     - if @pictures.any?
       - @pictures.each do |picture|
         = link_to picture.picture.url do
