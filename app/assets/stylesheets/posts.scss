@@ -119,16 +119,16 @@ body{
 }
 
 .input__title {
-  font-size: 25px;
+  font-size: 30px;
   width: 500px;
   background-color: #fff;
-  border-color: whitesmoke;
+  border: 1px dashed #ccc;
 }
 
 .input__text {
   font-size: 20px;
   background-color: #fff;
-  border-color: gray;
+  border: 1px dashed #ccc;
 }
 
 .input__search {
@@ -145,11 +145,8 @@ textarea {
 .icon_image {
   width: 60px;
   height: 60px;
-  //サイズ指定
   border-radius: 100px;
-  //画像を丸くする
   object-fit: cover;
-  //タテヨコ比を変えないままトリミング
 }
 
 .liked-users {
@@ -187,4 +184,76 @@ textarea {
   padding: 0 18px;
   border-radius: 100px;
   font-weight: bold;
+}
+
+.dropzone-container {
+  margin: 0 auto;
+  display: flex;
+  height: 160px;
+  width: 610px;
+  background: #fff;
+  border: 1px dashed #ccc;
+}
+
+.dropzone-area {
+  height: 160px;
+  width: auto;
+  overflow: hidden;
+}
+
+.upload-image {
+  height: 160px;
+  width: 600px;
+}
+
+#exhibit-images-preview {
+  display: flex;
+}
+
+.sell-uploads-drop {
+  padding: 5px;
+}
+
+.sell_upload__area {
+  display: flex;
+  height: 160px;
+}
+
+.img_view {
+  padding: 5px;
+}
+
+.box{
+  width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  &__form-list{
+    height: auto;
+    overflow: hidden;
+    width: 700px;
+    &__upload-box{
+      padding: 40px 40px 40px 40px;
+      height: auto;
+      overflow: hidden;
+    }
+  }
+}
+
+.xxxxxbtn {
+  display: inline;
+}
+
+.xxxxxbtn.delete{
+  float: right;
+  margin-right: 10px;
+  color: deepskyblue;
+}
+
+.xxxxxbtn.edit{
+  margin-left: 10px;
+  color: deepskyblue;
+}
+
+#edit-images-preview {
+  display: flex;
 }
