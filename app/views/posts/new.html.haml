@@ -18,19 +18,22 @@
 
     %p.contents__new-post-form
       = f.label :title, "タイトル"
-      %br
+      = f.label :必須, class:'hissu'
+      %p
       = f.text_field :title, class: 'input-title'
 
-      %hr{width: "40%"}
+      %p
 
       = f.label :content, "内容"
-      %br
+      = f.label :必須, class:'hissu'
+      %p
       = f.text_area :content, cols: 65, rows: 10, class: 'input-text'
 
       %hr{width: "40%"}
 
       = f.label :pictures, "画像 (5枚までアップできます)"
-      %br
+      = f.label :任意, class:'nini'
+      %p
       = f.fields_for :pictures, @pictures do |i|
         .dropzone-container
           .picture-uploads-drop
