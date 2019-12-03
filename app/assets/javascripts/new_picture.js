@@ -1,17 +1,17 @@
 $(document).on('turbolinks:load', function(){
-  var dropzone = $('.pictures-uploads-area');
-  var images = [];
-  var inputs  =[];
-  var input_area = $('.pictures-uploads-area');
-  var preview = $('#new-post-images-preview');
+  let dropzone = $('.pictures-uploads-area');
+  let images = [];
+  let inputs  =[];
+  let input_area = $('.pictures-uploads-area');
+  let preview = $('#new-post-images-preview');
 
   $(document).on('change', 'input[type= "file"].upload-image',function() {
-    var file = $(this).prop('files')[0];
-    var reader = new FileReader();
+    let file = $(this).prop('files')[0];
+    let reader = new FileReader();
     inputs.push($(this));
-    var img = $(`<div class="img_view"><img></div>`);
+    let img = $(`<div class="img_view"><img></div>`);
     reader.onload = function(e) {
-      var btn_wrapper = $('<div class="btn_wrapper"><div class="picture-btn edit">編集</div><div class="picture-btn delete">削除</div></div>');
+      let btn_wrapper = $('<div class="btn_wrapper"><div class="picture-btn edit">編集</div><div class="picture-btn delete">削除</div></div>');
       img.append(btn_wrapper);
       img.find('img').attr({
         src: e.target.result,
@@ -32,17 +32,17 @@ $(document).on('turbolinks:load', function(){
       })
       return;
     }
-    var new_image = $(`<input multiple= "multiple" name="pictures[picture][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image" style="opacity:0;">`);
+    let new_image = $(`<input multiple= "multiple" name="pictures[picture][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image" style="opacity:0;">`);
     input_area.prepend(new_image);
   });
 
   $(document).on('click', '.delete', function() {
-    var target_image = $(this).parent().parent();
+    let target_image = $(this).parent().parent();
     $.each(inputs, function(index, input){
       if ($(this).data('image') == target_image.data('image')){
         $(this).remove();
         target_image.remove();
-        var num = $(this).data('image');
+        let num = $(this).data('image');
         images.splice(num, 1);
         inputs.splice(num, 1);
         if(inputs.length == 0) {
@@ -53,10 +53,10 @@ $(document).on('turbolinks:load', function(){
       }
     })
 
-    var new_image = $(`<input multiple= "multiple" name="pictures[picture][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image" style="opacity:0;">`);
+    let new_image = $(`<input multiple= "multiple" name="pictures[picture][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image" style="opacity:0;">`);
     input_area.prepend(new_image);
     $.each(inputs, function(index, input) {
-      var input = $(this)
+      let input = $(this)
       input.attr({
         'data-image': index
       })
