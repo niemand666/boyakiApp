@@ -11,25 +11,15 @@
   %p
     = f.label :title, "タイトル"
     %br
-    = f.text_field :title, class: 'input__title'
-  %p
+    = f.text_field :title, class: 'input-title'
+    %hr{width: "40%"}/
     = f.label :content, "内容"
     %br
-    = f.text_area :content, cols: 65, rows: 10, class: 'input__text'
-    %hr{width: "40%"}/
-    
-    = f.label :title, "画像(5枚までアップできます)"
-    %br
-    = f.fields_for :pictures, @pictures do |i|
-      .dropzone-container
-        .sell-uploads-drop
-          #exhibit-images-preview
-        .dropzone-area
-          = i.label :picture, for: 'upload-image' do
-            .sell_upload__area
-              = i.file_field :picture, multiple: true, name: 'pictures[picture][]', id: 'upload-image', class: 'upload-image', 'data-image': 0, style: 'opacity: 0'
+    = f.text_area :content, cols: 65, rows: 10, class: 'input-text'
+
     %p
     %hr{width: "40%"}/
+
     = f.submit class: 'post', value: '更新する'  
 
   %hr{width: "40%"}/
