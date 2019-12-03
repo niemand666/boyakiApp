@@ -30,6 +30,7 @@ class PostsController < ApplicationController
 
   def show
     @user = User.find_by(id: @post.user_id)
+    @pictures = @post.pictures
     @comments = @post.comments.includes(:user).order("created_at DESC")
     @comments_count = Comment.where(post_id: @post.id).count
     @like = Like.new
