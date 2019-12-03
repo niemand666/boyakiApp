@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :user do
     nickname              {Faker::Lorem.characters(number: 20)}
     password              {"00000000"}
@@ -7,5 +6,4 @@ FactoryBot.define do
     image                 {File.open("#{Rails.root}/spec/fixtures/image.jpg")}
     sequence(:email)      {Faker::Internet.email}
   end
-  
 end
