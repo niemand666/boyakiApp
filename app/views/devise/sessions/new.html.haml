@@ -9,11 +9,11 @@
     .field
       = f.label :メールアドレス
       %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input__title'
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-title'
     .field
       = f.label :パスワード
       %br/
-      = f.password_field :password, autocomplete: "current-password", class: 'input__title'
+      = f.password_field :password, autocomplete: "current-password", class: 'input-title'
       %hr{width:"50%"}/
     .actions
       = f.submit "ログイン", class: 'post'
