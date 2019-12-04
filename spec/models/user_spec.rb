@@ -70,7 +70,7 @@ RSpec.describe User, type: :model do
     end
 
     # 10. emailにカナ文字が含まれる場合は登録できない
-    it "is invalid, if addres contains kana characters" do
+    it "is invalid, if email contains kana characters" do
       user = build(:user, email: 'aaあa@aaa')
       user.valid?
       expect(user.errors[:email]).to include()
