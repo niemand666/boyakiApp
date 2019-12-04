@@ -5,7 +5,7 @@ RSpec.describe Like, type: :model do
     let(:post) { create(:post) }
     let(:user) { create(:user) }
 
-    # 1. 存在する user_id と post_id の場合は有効である
+    # 1. 存在する user_id と post_id の場合はいいねが成立する
     it "is valid with a user_id and post_id " do
       like = build(:like, user: user, post: post)
       expect(like).to be_valid
