@@ -24,5 +24,4 @@ feature 'post', type: :feature do
       find('input[type="submit"]').click
     }.to change(Post, :count).by(1)
   end
-
 end
