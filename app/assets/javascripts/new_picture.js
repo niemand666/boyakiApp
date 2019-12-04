@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
   var input_area = $('.pictures-uploads-area');
   var preview = $('#new-post-images-preview');
 
-  $(document).on('change', 'input[type= "file"].upload-image',function() {
+  $(document).on('change', 'input[type="file"].upload-image',function() {
     var file = $(this).prop('files')[0];
     var reader = new FileReader();
     inputs.push($(this));

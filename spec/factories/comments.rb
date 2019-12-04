@@ -1,7 +1,7 @@
 FactoryBot.define do
-
   factory :comment do
-    text                    {"いいね"}
+    text {"いいね"}
+    post
+    user
   end
-
 end
