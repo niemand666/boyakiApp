@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Picture, type: :model do
   include CarrierWave::Test::Matchers
-  describe '#create' do
+  describe '画像登録' do
     let(:post) { create(:post) }
 
     # 1. 登録可能

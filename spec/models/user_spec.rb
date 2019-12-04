@@ -114,10 +114,12 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # 16. imageが空欄では登録できない
-  it "is invalid without a image" do
-    user = build(:user, image: nil)
-    user.valid?
-    expect(user.errors[:image]).to include("can't be blank")
+  describe 'ユーザー新規登録(imageの妥当性の確認)' do
+    # 16. imageが空欄では登録できない
+    it "is invalid without a image" do
+      user = build(:user, image: nil)
+      user.valid?
+      expect(user.errors[:image]).to include("can't be blank")
+    end
   end
 end

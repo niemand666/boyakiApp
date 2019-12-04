@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  describe '#create' do
+  describe '「いいね」の成立' do
     let(:post) { create(:post) }
     let(:user) { create(:user) }
 

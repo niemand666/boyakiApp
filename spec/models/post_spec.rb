@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  describe '#create' do
+  describe '記事の投稿' do
     # 1. title と content があれば投稿できる
     it "is valid with a title and content" do
       post = build(:post)

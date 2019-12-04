@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Relationship, type: :model do
-  describe '#create' do
+  describe 'フォローの成立' do
     let(:user){create(:user)}
     let(:other_user){create(:other_user)}
 

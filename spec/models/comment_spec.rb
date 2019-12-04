@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  describe '#create' do
+  describe 'コメントの投稿' do
     let(:post) { create(:post) }
     let(:user) { create(:user) }
 
