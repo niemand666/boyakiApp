@@ -40,6 +40,15 @@ class PostsController < ApplicationController
   end
 
   def edit
+    gon.post = @post
+    gon.pictures = @post.pictures
+
+    require 'base64'
+    gon.pictures_binary_datas = []
+    @post.pictures.each do |image|
+      binary_data = File.read(image.picture.file.file)
+      gon.pictures_binary_datas << Base64.strict_encode64(binary_data)
+    end
   end
 
   def update

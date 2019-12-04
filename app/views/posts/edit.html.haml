@@ -3,6 +3,55 @@
     = image_tag "Dipressd_man.png", size:'100x100'
 
   %h1 投稿を編集
-  %hr{width: "40%"}/
 
-  = render 'form'
+  %hr{width: "40%"}
+
+  = form_with model: @post, id:'edit-pictures-form' do |f|
+
+    - if @post.errors.any?
+      #error_explanation
+        %h2
+          #{@post.errors.count} 件のエラーが発生したため保存ができませんでした。
+        %ul
+          - @post.errors.full_messages.each do |msg|
+            %li= msg
+
+    %p.contents__new-post-form
+      = f.label :title, "タイトル"
+      = f.label :必須, class:'hissu'
+      %p
+      = f.text_field :title, class: 'input-title'
+
+      %p
+
+      = f.label :content, "内容"
+      = f.label :必須, class:'hissu'
+      %p
+      = f.text_area :content, cols: 65, rows: 10, class: 'input-text'
+
+      %hr{width: "40%"}
+
+      = f.label :pictures, "画像 (5枚までアップできます)"
+      = f.label :任意, class:'nini'
+      %p
+      = f.fields_for :pictures, @post.pictures.first do |i|
+        .dropzone-container
+          .picture-uploads-drop
+            #edit-post-images-preview
+          .dropzone-area
+            = i.label :picture, for: 'upload-image' do
+              .pictures-uploads-area-edit
+                = i.file_field :picture, multiple: true, name: 'pictures[picture][]', id: 'upload-image', class: 'upload-image', 'data-image': 0, style: 'opacity: 0'
+      %p
+      %hr{width: "40%"}
+      
+      = f.submit class: 'post', value: '投稿する'  
+
+    %hr{width: "40%"}
+  
+    %br
+    .contents__buttom
+      = link_to 'トップページ', root_path, class: 'post'
+    %br
+    .contents__logo
+      = image_tag "Dipressd_man.png", size:'100x100'
