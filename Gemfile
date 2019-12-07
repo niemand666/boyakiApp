@@ -89,3 +89,4 @@ gem 'ransack'
 gem "font-awesome-rails"
 gem 'impressionist'
 gem 'gon'
+gem 'aws-sdk', '~> 3'
