@@ -40,11 +40,37 @@ class PostsController < ApplicationController
   end
 
   def edit
+    gon.post = @post
+    gon.pictures = @post.pictures
+
+    require 'base64'
+    gon.pictures_binary_datas = []
+    @post.pictures.each do |image|
+      binary_data = File.read(image.picture.file.file)
+      gon.pictures_binary_datas << Base64.strict_encode64(binary_data)
+    end
   end
 
   def update
-    if @post.update(post_params)
+    ids = @post.pictures.map{|image| image.id }
+    exist_ids = registered_image_params[:ids].map(&:to_i)
+    exist_ids.clear if exist_ids[0] == 0
+
+    if (exist_ids.length != 0 || new_image_params[:images][0] != " ") && @post.update(post_params)
+      unless ids.length == exist_ids.length
+        delete_ids = ids - exist_ids
+        delete_ids.each do |id|
+          @post.pictures.find(id).destroy
+        end
+      end
+
+      unless new_image_params[:images][0] == " "
+        params[:pictures]['picture'].reverse_each do |i|
+          @picture = @post.pictures.create!(picture: i)
+        end
+      end
       redirect_to @post
+      
     else
       render :edit, status: :unprocessable_entity
     end
@@ -75,5 +101,13 @@ class PostsController < ApplicationController
 
   def set_search
     @search = Post.ransack(params[:q])
+  end
+
+  def registered_image_params
+    params.require(:registered_images_ids).permit({ids: []})
+  end
+
+  def new_image_params
+    params.require(:new_images).permit({images: []})
   end
 end

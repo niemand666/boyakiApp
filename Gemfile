@@ -88,3 +88,4 @@ gem 'fog-aws'
 gem 'ransack'
 gem "font-awesome-rails"
 gem 'impressionist'
+gem 'gon'
