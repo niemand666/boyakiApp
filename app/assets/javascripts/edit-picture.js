@@ -41,11 +41,11 @@ $(document).on('turbolinks:load', function(){
         preview.append(image);
       });
 
-      var new_image = $(`<input multiple= "multiple" name="pictures[picture][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image" style="opacity:0;">`);
+      var new_image = $(`<input multiple="multiple" name="pictures[picture][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image" style="opacity:0;">`);
       input_area.prepend(new_image);
     });
 
-    $(document).on("change", 'input[type= "file"].upload-image', function() {
+    $(document).on("change", 'input[type="file"].upload-image', function() {
       var file = $(this).prop('files')[0];
       var reader = new FileReader();
       new_image_files.push($(this));
@@ -61,7 +61,12 @@ $(document).on('turbolinks:load', function(){
       }
       reader.readAsDataURL(file);
       images.push(img);
-    })
+
+      $.each(images, function(index, image) {
+        image.attr('data-image', index);
+        preview.append(image);
+      })
+    });
 
     $(document).on('click', '.delete', function(){
       // 削除ボタンを押した画像を取得
