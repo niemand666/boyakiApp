@@ -11,7 +11,6 @@ $(document).on('turbolinks:load', function(){
     var new_image_files = [];
 
     // 登録済画像のプレビュー表示
-    // gem'gon'を入れたので、コントローラで定義した変数が使える
     gon.pictures.forEach(function(image, index){
       var img = $(`<div class= "img_view"><div class="img_area"><img class="image"></div></div>`);
 
