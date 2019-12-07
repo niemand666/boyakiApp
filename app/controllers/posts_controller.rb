@@ -43,11 +43,26 @@ class PostsController < ApplicationController
     gon.post = @post
     gon.pictures = @post.pictures
 
+    require 'aws-sdk'
     require 'base64'
+
     gon.pictures_binary_datas = []
-    @post.pictures.each do |image|
-      binary_data = File.read(image.picture.file.file)
-      gon.pictures_binary_datas << Base64.strict_encode64(binary_data)
+
+    if Rails.env.production?
+      client = Aws::S3::Client.new(
+        region: 'ap-northeast-1',
+        aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+        aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+        )
+      @post.pictures.each do |image|
+        binary_data = client.get_object(bucket: 'boyakiapp', key: image.picture.file.path).body.read
+        gon.pictures_binary_datas << Base64.strict_encode64(binary_data)
+      end
+    else
+      @post.pictures.each do |image|
+        binary_data = File.read(image.picture.file.file)
+        gon.pictures_binary_datas << Base64.strict_encode64(binary_data)
+      end
     end
   end
 
