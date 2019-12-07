@@ -86,16 +86,16 @@ AWS
 |image|string|null: false|
 
 ### Association
-- has_many :posts, dependent: :destroy
-- has_many :comments, dependent: :destroy
-- has_many :likes, dependent: :destroy
+- has_many :posts
+- has_many :comments
+- has_many :likes
 - has_many :liked_posts, through: :likes, source: :post
-- has_many :relationships, dependent: :destroy
+- has_many :relationships
 - has_many :followings, through: :relationships, source: :follow
-- has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
+- has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
 - has_many :followers, through: :reverse_of_relationships, source: :user
-- has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
-- has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+- has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id'
+- has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id'
 
 
 ## relationships table
@@ -118,11 +118,11 @@ AWS
 
 ### Association
 - belongs_to :user
-- has_many :comments, dependent: :destroy
-- has_many :likes, dependent: :destroy
+- has_many :comments
+- has_many :likes
 - has_many :liked_users, through: :likes, source: :user
-- has_many :notifications, dependent: :destroy
-- has_many :pictures, dependent: :destroy
+- has_many :notifications
+- has_many :pictures
 
 
 ## pictures table
