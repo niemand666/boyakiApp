@@ -23,6 +23,8 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :image, presence: true
 
+  include Paginate
+  scope :active, -> { order(created_at: :DESC) }
 
   # フォローしようとしている other_user が自分自身ではないかを検証するメソッド
   def follow(other_user)
@@ -31,18 +33,15 @@ class User < ApplicationRecord
     end
   end
 
-
   def unfollow(other_user)
     relationship = self.relationships.find_by(follow_id: other_user.id)
     relationship.destroy if relationship
   end
 
-
   # フォローしている User を取得し、include?(other_user) によって other_user が含まれていないかを確認するメソッド
   def following?(other_user)
     self.followings.include?(other_user)
   end
-
 
   # 通知レコード作成メソッド
   def create_notification_follow!(current_user)

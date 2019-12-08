@@ -34,7 +34,7 @@
       = f.label :pictures, "画像 (5枚までアップできます)"
       = f.label :任意, class:'nini'
       %p
-      = f.fields_for :pictures, @post.pictures.first do |i|
+      = f.fields_for :pictures, Picture.new do |i|
         .dropzone-container
           .picture-uploads-drop
             #edit-post-images-preview
