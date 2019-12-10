@@ -13,7 +13,8 @@ RSpec.describe 'sign_up, sign_in, log_out', type: :system, js: true do
         fill_in 'user[email]', with: 'dog@gmail.com'
         fill_in 'user[password]', with: '1234567'
         fill_in 'user[password_confirmation]', with: '1234567'
-        click_button 'アカウント作成'
+        find('input[name="commit"]').click
+        # click_button 'アカウント作成'
       end
 
       it '新規ユーザー登録できる' do
@@ -31,11 +32,11 @@ RSpec.describe 'sign_up, sign_in, log_out', type: :system, js: true do
         fill_in 'user[email]', with: 'dog@gmail.com'
         fill_in 'user[password]', with: '1234567'
         fill_in 'user[password_confirmation]', with: '1234567'
-        click_button 'アカウント作成'
+        find('input[name="commit"]').click
       end
 
       it '新規ユーザー登録ができない' do
-        expect(page).to have_content()
+        expect(page).to have_content('Email has already been taken')
       end
     end
   end

@@ -13,7 +13,7 @@
         = f.label :必須, class:'hissu'
         %br/
         - if @user.image.present?
-          = image_tag @user.image, id: 'img_prev'
+          = image_tag @user.image.url, id: 'img_prev'
         - else
           = image_tag "sample.jpg", id:'img_prev'
         = f.file_field :image, class: 'field__dropzone', id: "user_img"
