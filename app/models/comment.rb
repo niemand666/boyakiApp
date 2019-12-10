@@ -4,4 +4,7 @@ class Comment < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   validates :text, presence: true
+  
+  scope :recent, -> { includes(:user) }
+  scope :active, -> { order(created_at: :DESC) }
 end

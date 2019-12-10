@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   impressionist actions: [:show]
 
   def index
-    @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(5)
+    @posts = Post.recent.active.paginate(params)
     @user = current_user
   end
 
@@ -17,24 +17,27 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.save
     if @post.save
-      unless params[:pictures].nil?
-        params[:pictures]['picture'].reverse_each do |i|
-          @picture = @post.pictures.create!(picture: i)
-        end
-      end
-      redirect_to @post
+      create_pictures and redirect_to @post
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def create_pictures
+    unless params[:pictures].nil?
+      params[:pictures]['picture'].reverse_each do |i|
+        @picture = @post.pictures.create!(picture: i)
+      end
     end
   end
 
   def show
     @user = User.find_by(id: @post.user_id)
     @pictures = @post.pictures
-    @comments = @post.comments.includes(:user).order("created_at DESC")
+    @comments = @post.comments.recent.active
     @comments_count = Comment.where(post_id: @post.id).count
     @like = Like.new
-    @likes = @post.likes.includes(:user)
+    @likes = @post.likes.recent
     impressionist(@post, nil, unique: [:session_hash])
     @page_views = @post.impressionist_count
   end
@@ -42,11 +45,9 @@ class PostsController < ApplicationController
   def edit
     gon.post = @post
     gon.pictures = @post.pictures
-
+    gon.pictures_binary_datas = []
     require 'aws-sdk'
     require 'base64'
-
-    gon.pictures_binary_datas = []
 
     if Rails.env.production?
       client = Aws::S3::Client.new(
@@ -71,34 +72,33 @@ class PostsController < ApplicationController
     exist_ids = registered_image_params[:ids].map(&:to_i)
     exist_ids.clear if exist_ids[0] == 0
 
-    if (exist_ids.length != 0 || new_image_params[:images][0] != " ") && @post.update(post_params)
+    if @post.update(post_params)
+
       unless ids.length == exist_ids.length
         delete_ids = ids - exist_ids
         delete_ids.each do |id|
           @post.pictures.find(id).destroy
         end
       end
-
+      
       unless new_image_params[:images][0] == " "
         params[:pictures]['picture'].reverse_each do |i|
           @picture = @post.pictures.create!(picture: i)
         end
       end
       redirect_to @post
-      
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @post.destroy
-    redirect_to user_path(current_user)
+    @post.destroy and redirect_to user_path(current_user)
   end
 
   def search
     @search = Post.ransack(params[:q])
-    @results = @search.result.includes(:user).order("created_at DESC").page(params[:page]).per(5)
+    @results = @search.result.recent.active.paginate(params)
   end
 
   private
