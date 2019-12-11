@@ -53,7 +53,7 @@ AWS
 ・ページネーション(gem kaminariを使用)  
 ・タイムラインの作成(フォローしているユーザーの投稿のみが表示されます)  
 ・単体テスト(RSpec)  
-・統合テスト(RSpec)  
+・統合テスト(System Specを利用)  
 
 インフラ  
 ・Docker、docker-composeによる開発環境、テスト環境構築  
