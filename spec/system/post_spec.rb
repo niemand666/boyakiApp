@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe '記事投稿機能のシステムテスト', type: :system, js: true do
-  describe '投稿機能' do
+  describe '記事の投稿' do
     file_path = "#{Rails.root}/spec/fixtures/image.jpg"
 
     before do
       user = create(:user, email: 'dog@gmail.com')
+      user2 = create(:other_user, email: 'dogdog@gmail.com')
     end
 
     context 'ログインしていない場合' do
@@ -89,6 +90,24 @@ RSpec.describe '記事投稿機能のシステムテスト', type: :system, js: 
           expect(page).to have_content 'タイトル2'
           expect(page).to have_content 'おはようございます。'
           expect(page).to have_selector("img[src$='image.jpg']", count: 5)
+        end
+
+        context '別のユーザーでログインした場合' do
+          before do
+            visit root_path
+            click_link 'ログアウト'
+            visit new_user_session_path
+            fill_in 'user[email]', with: 'dogdog@gmail.com'
+            fill_in 'user[password]', with: '11111111'
+            find('input[name="commit"]').click
+            click_link '読む'
+          end
+
+          it '投稿された記事を読むことができる' do
+            expect(page).to have_content 'タイトル2'
+            expect(page).to have_content 'おはようございます。'
+            expect(page).to have_selector("img[src$='image.jpg']", count: 5)
+          end
         end
       end
     end
