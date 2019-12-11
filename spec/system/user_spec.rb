@@ -14,7 +14,6 @@ RSpec.describe 'ログイン機能のシステムテスト', type: :system, js: 
         fill_in 'user[password]', with: '1234567'
         fill_in 'user[password_confirmation]', with: '1234567'
         find('input[name="commit"]').click
-        # click_button 'アカウント作成'
       end
 
       it '新規ユーザー登録できる' do
