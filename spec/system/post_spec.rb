@@ -42,7 +42,7 @@ RSpec.describe '記事投稿機能のシステムテスト', type: :system, js: 
           find('input[name="commit"]').click
         end
 
-        it '記事の投稿できる' do
+        it '記事の投稿ができる' do
           post = Post.last
           expect(post.title).to eq 'タイトル1'
         end
@@ -64,6 +64,11 @@ RSpec.describe '記事投稿機能のシステムテスト', type: :system, js: 
           expect(page).to have_content 'こんばんは。'
           expect(page).to have_selector ("img[src$='image.jpg']")
         end
+
+        it '自分の投稿には編集ボタンと削除ボタンが表示される' do
+          expect(page).to have_content '編集する'
+          expect(page).to have_content '削除する'
+        end
       end
 
       context '画像5枚で投稿する場合' do
@@ -79,7 +84,7 @@ RSpec.describe '記事投稿機能のシステムテスト', type: :system, js: 
           find('input[name="commit"]').click
         end
 
-        it '記事の投稿できる' do
+        it '記事の投稿ができる' do
           post = Post.last
           expect(post.title).to eq 'タイトル2'
         end

@@ -8,7 +8,7 @@ FactoryBot.define do
     sequence(:email)      { Faker::Internet.email }
   end
   
-  # 他人（フォロー機能のテストのために生成）
+  # 他人
   factory :other_user, class: User do
     nickname              { Faker::Lorem.characters(number: 20) }
     password              { "11111111" }

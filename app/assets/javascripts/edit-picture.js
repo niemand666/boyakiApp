@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function(){
-  if($('#edit-pictures-form').length){
+  if ($('#edit-pictures-form').length){
     var input_area = $(".pictures-uploads-area-edit");
     var preview = $("#edit-post-images-preview");
 
