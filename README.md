@@ -60,12 +60,12 @@ AWS
 ・仮想サーバーEC2(AWS)を使用  
 ・AWS S3への画像アップロード(gem CarrierWaveを使用)  
 ・Capistranoを用いた自動デプロイ  
+・CircleCIによる自動テスト  
 
 
 ## 追加予定機能
 ・単体テスト 随時進めていきます。  
 ・統合テスト 随時進めていきます。  
-・CircleCIによる自動テスト  
 ・CircleCIによる自動デプロイ  
 
 
