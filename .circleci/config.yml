@@ -82,7 +82,7 @@ jobs:
       # ssh_key setup
       - add_ssh_keys:
           fingerprints:
-            - "f9:7e:c5:d9:95:32:eb:c1:c2:7f:d7:97:66:fc:55:88"
+            - "35:3c:b9:78:5c:5c:bc:48:41:ed:8e:31:72:c8:9d:f4"
 
       # deploy
       - deploy:
