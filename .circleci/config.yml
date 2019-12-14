@@ -80,15 +80,15 @@ jobs:
           destination: test-results
 
       # ssh_key setup
-      #- add_ssh_keys:
-        #fingerprints:
-          #- "f9:7e:c5:d9:95:32:eb:c1:c2:7f:d7:97:66:fc:55:88"
+      - add_ssh_keys:
+          fingerprints:
+            - "f9:7e:c5:d9:95:32:eb:c1:c2:7f:d7:97:66:fc:55:88"
 
       # deploy
-      #- deploy:
-        #name: Capistrano deploy
-        #command: |
-          #if [ "${CIRCLE_BRANCH}" != "master" ]; then
-            #exit 0
-          #fi
-          #bundle exec cap production deploy
+      - deploy:
+          name: Capistrano deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
