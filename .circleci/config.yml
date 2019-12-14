@@ -79,10 +79,19 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-      # ssh_key setup
+      # setup ssh_key
       - add_ssh_keys:
           fingerprints:
             - "35:3c:b9:78:5c:5c:bc:48:41:ed:8e:31:72:c8:9d:f4"
+
+      - run:
+          name: Add ssh-agent
+          command: |
+            ssh-agent -s > ~/.ssh_agent_conf
+            source ~/.ssh_agent_conf
+            for _k in $(ls ${HOME}/.ssh/id_*); do
+              ssh-add ${_k} || true
+            done
 
       # deploy
       - deploy:
