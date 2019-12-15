@@ -1,6 +1,7 @@
 # 自作アプリ「まいったね」
 ご覧になる際はURLにアクセスのうえ、下記アカウントでログインしてください。  
 ・URL: http://boyaki-portfolio.com  
+
 ・メールアドレス: test@gmail.com  
 ・パスワード: 123456 
 
