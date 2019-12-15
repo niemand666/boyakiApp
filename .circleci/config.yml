@@ -11,7 +11,7 @@ jobs:
         environment:
           - RAILS_ENV: test
           - DB_USERNAME: 'root'
-          - DB_PASSWORD: 'password'
+          - DB_PASSWORD: ''
           - DB_HOST: 127.0.0.1
           - BUNDLER_VERSION: 1.17.0
 
@@ -84,7 +84,6 @@ jobs:
           fingerprints:
             #- "d1:9a:62:58:34:aa:28:4c:50:8a:d1:68:14:83:34:65"
             - "6a:1a:f8:ec:1c:3f:16:87:ba:9c:8c:e1:95:ba:b4:d6"
-
 
       #- run:
           #name: Add ssh-agent
