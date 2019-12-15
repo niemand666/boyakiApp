@@ -82,8 +82,8 @@ jobs:
       # setup ssh_key
       - add_ssh_keys:
           fingerprints:
-            #- "d1:9a:62:58:34:aa:28:4c:50:8a:d1:68:14:83:34:65"
-            - "6a:1a:f8:ec:1c:3f:16:87:ba:9c:8c:e1:95:ba:b4:d6"
+            - "d1:9a:62:58:34:aa:28:4c:50:8a:d1:68:14:83:34:65"
+            #- "6a:1a:f8:ec:1c:3f:16:87:ba:9c:8c:e1:95:ba:b4:d6"
 
       #- run:
           #name: Add ssh-agent
