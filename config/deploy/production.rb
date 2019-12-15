@@ -1,10 +1,10 @@
 server '52.192.191.134', user: 'ec2-user', roles: %w{app db web}
 
-# set :ssh_options, {
-#     forward_agent: true,
-#     user: fetch(:user),
-#     keys: ["#{ENV['SERVICE_NAME_PRODUCTION_SSH_KEY']}"]
-# }
+set :ssh_options, {
+    forward_agent: true,
+    user: fetch(:user),
+    keys: ["#{ENV['SERVICE_NAME_PRODUCTION_SSH_KEY']}"]
+}
 
 # server-based syntax
 # ======================
