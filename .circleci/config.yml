@@ -79,12 +79,12 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-      # setup ssh_key
+      # ssh_key setup
       - add_ssh_keys:
           fingerprints:
             - "d1:9a:62:58:34:aa:28:4c:50:8a:d1:68:14:83:34:65"
 
-      # deploy
+      # run deploy
       - deploy:
           name: Capistrano deploy
           command: |
