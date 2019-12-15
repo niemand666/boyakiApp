@@ -82,16 +82,16 @@ jobs:
       # setup ssh_key
       - add_ssh_keys:
           fingerprints:
-            - "35:3c:b9:78:5c:5c:bc:48:41:ed:8e:31:72:c8:9d:f4"
+            - "7a:d4:e6:88:48:63:de:05:18:bb:17:6a:3c:9d:e3:1c"
 
-      - run:
-          name: Add ssh-agent
-          command: |
-            ssh-agent -s > ~/.ssh_agent_conf
-            source ~/.ssh_agent_conf
-            for _k in $(ls ${HOME}/.ssh/id_*); do
-              ssh-add ${_k} || true
-            done
+      #- run:
+          #name: Add ssh-agent
+          #command: |
+            #ssh-agent -s > ~/.ssh_agent_conf
+            #source ~/.ssh_agent_conf
+            #for _k in $(ls ${HOME}/.ssh/id_*); do
+              #ssh-add ${_k} || true
+            #done
 
       # deploy
       - deploy:
