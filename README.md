@@ -1,4 +1,4 @@
-# 自作アプリ「まいったね」
+# 自作アプリ「Le Penseur」
 ご覧になる際はURLにアクセスのうえ、下記アカウントでログインしてください。 
 
 ・URL: https://boyaki-portfolio.com/  
