@@ -59,9 +59,11 @@ AWS
 
 インフラ  
 ・Docker、docker-composeによる開発環境、テスト環境構築  
-・仮想サーバーEC2(AWS)を使用  
-・AWS S3への画像アップロード(gem CarrierWaveを使用)  
 ・Capistranoを用いた自動デプロイ  
+・仮想サーバーEC2(AWS)を使用  
+・S3(AWS)への画像アップロード(gem CarrierWaveと連携)  
+・Route53(AWS)を使用した独自ドメインの取得  
+・ELB(AWS)を使用した常時SSL化  
 ・CircleCIによる自動テスト  
 ・CircleCIによる自動デプロイ  
 
