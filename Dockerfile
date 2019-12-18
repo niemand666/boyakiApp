@@ -1,3 +1,4 @@
+# ベースとなるDockerイメージを指定
 FROM ruby:2.5.1
 
 # 必要なパッケージをインストール
@@ -22,18 +23,18 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN echo 'Asia/Tokyo' > /etc/timezone && dpkg-reconfigure tzdata
 ENV TZ JST-9
 
-# Setup
+# Japanese Setup
 RUN apt-get update -y && apt-get install -y locales && \
     sed -i 's/#.*ja_JP\.UTF/ja_JP\.UTF/' /etc/locale.gen && \
     locale-gen && update-locale LANG=ja_JP.UTF-8
 ENV LANG ja_JP.UTF-8
 ENV LC_CTYPE ja_JP.UTF-8
 
-# chrome をインストール
+# chromeをインストール
 RUN curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
-# chrome driver をインストール
+# chrome driverをインストール
 RUN curl -O https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_mac64.zip
 RUN unzip chromedriver_mac64.zip
 
