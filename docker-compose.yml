@@ -8,7 +8,8 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: root
     ports:
-      - "4306:3306"
+      - "4306:3306" 
+      # sequelProと繋ぎたいので、3306ではなく4306をポートに指定
 
   app:
     build: .
