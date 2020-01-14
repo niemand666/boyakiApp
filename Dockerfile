@@ -1,69 +1,39 @@
-# ベースとなるDockerイメージを指定
-FROM ruby:2.5.1
+# ruby2.5.1のalpineを指定
+FROM ruby:2.5.1-alpine
 
-# 必要なパッケージをインストール
-RUN apt-get update -qq && \
-  apt-get install -y build-essential \
-  libpq-dev \
-  nodejs \
-  libappindicator1 \
-  fonts-liberation \
-  libappindicator3-1 \
-  libasound2 \
-  libnspr4 \
-  libnss3 \
-  libxss1 \
-  xdg-utils \
-  apt-utils \
-  lsb-release \
-  unzip
+ENV CHROME_PACKAGES="chromium-chromedriver zlib-dev chromium xvfb wait4ports xorg-server dbus ttf-freefont mesa-dri-swrast udev" \
+    BUILD_PACKAGES="build-base curl-dev" \
+    LANG=C.UTF-8 \
+    TZ=Asia/Tokyo
 
-# Timezone
-ENV DEBIAN_FRONTEND noninteractive
-RUN echo 'Asia/Tokyo' > /etc/timezone && dpkg-reconfigure tzdata
-ENV TZ JST-9
+# apk --update --no-cache add でインストールするパッケージを指定
+RUN apk --update --no-cache add tzdata libxml2-dev curl-dev make gcc libc-dev g++ mariadb-dev linux-headers nodejs && \
+    mkdir /app_name
 
-# Japanese Setup
-RUN apt-get update -y && apt-get install -y locales && \
-    sed -i 's/#.*ja_JP\.UTF/ja_JP\.UTF/' /etc/locale.gen && \
-    locale-gen && update-locale LANG=ja_JP.UTF-8
-ENV LANG ja_JP.UTF-8
-ENV LC_CTYPE ja_JP.UTF-8
+WORKDIR /app_name
 
-# chromeをインストール
-RUN curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+ADD Gemfile /app_name/Gemfile
+ADD Gemfile.lock /app_name/Gemfile.lock
 
-# chrome driverをインストール
-RUN curl -O https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_mac64.zip
-RUN unzip chromedriver_mac64.zip
+ENV BUNDLER_VERSION 1.17.0
+# && \で改行していくことにより、より軽量になるらしい
+RUN gem install bundler && \
+    apk upgrade && \
+# Warningがでたのでここでupdateを一度入れる
+    apk update && \
+    apk add --no-cache ${RUNTIME_PACKAGES} && \
+    apk add --no-cache ${CHROME_PACKAGES} && \
+    apk add --virtual build-packages --no-cache ${BUILD_PACKAGES} && \
+    bundle install && \
+    apk add --no-cache curl fontconfig && \
+    curl -O https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip && \
+    mkdir -p /usr/share/fonts/NotoSansCJKjp && \
+    unzip NotoSansCJKjp-hinted.zip -d /usr/share/fonts/NotoSansCJKjp/ && \
+    rm NotoSansCJKjp-hinted.zip && \
+    fc-cache -fv && \
+# 上で指定したパッケージの中で開発環境を構築したら不要になるファイルをapk delで削除する
+    apk del libxml2-dev curl-dev make gcc libc-dev g++ linux-headers build-packages
 
-# Japanese font
-RUN mkdir /noto
-ADD https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip /noto
-WORKDIR /noto
-RUN unzip NotoSansCJKjp-hinted.zip && \
-    mkdir -p /usr/share/fonts/noto && \
-    cp *.otf /usr/share/fonts/noto && \
-    chmod 644 -R /usr/share/fonts/noto/ && \
-    /usr/bin/fc-cache -fv
-WORKDIR /
-RUN rm -rf /noto
-
-# 作業ディレクトリの作成、設定
-RUN mkdir /app_name
-
-# 作業ディレクトリ名をAPP_ROOTに割り当てて、以下$APP_ROOTで参照
-ENV APP_ROOT /app_name
-WORKDIR $APP_ROOT
-
-# ホスト側（ローカル）のGemfileを追加する
-ADD ./Gemfile $APP_ROOT/Gemfile
-ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
-
-# Gemfileのbundle install
-RUN bundle install
-ADD . $APP_ROOT
-
-COPY . /app_name
-RUN ["apt-get", "install", "-y", "vim"]
+ADD . /app_name
+# 容量が大きく不要であるcacheファイルは構築後削除する
+RUN rm -rf /usr/local/bundle/cache/* /app_name/vendor/bundle/cache/*
